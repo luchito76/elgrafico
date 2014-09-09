@@ -21,7 +21,7 @@ namespace ElGrafico
             if (IsPostBack) return;
 
             llenarListas();
-            mostrarImagen();
+            //mostrarImagen();
         }
 
         private void llenarListas()
@@ -34,20 +34,20 @@ namespace ElGrafico
         private void mostrarImagen() {
             if (Request.QueryString["ImageID"] != null)
             {
-                string strQuery = "select numeroEdicion, img from revistas where idRevista=1";
+                string strQuery = "select numeroDeEdicion, imagenTapa from revistas where idRevista=8";
                 SqlCommand cmd = new SqlCommand(strQuery);
                 cmd.Parameters.Add("@idRevista", SqlDbType.Int).Value
                 = Convert.ToInt32(Request.QueryString["ImageID"]);
                 DataTable dt = GetData(cmd);
                 if (dt != null)
                 {
-                    Byte[] bytes = (Byte[])dt.Rows[0]["img"];
+                    Byte[] bytes = (Byte[])dt.Rows[0]["imagenTapa"];
                     Response.Buffer = true;
                     Response.Charset = "";
                     Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     Response.ContentType = "jpg";// dt.Rows[0]["ContentType"].ToString();
                     Response.AddHeader("content-disposition", "attachment;filename="
-                    + dt.Rows[0]["numeroEdicion"].ToString());
+                    + dt.Rows[0]["numeroDeEdicion"].ToString());
                     Response.BinaryWrite(bytes);
                     Response.Flush();
                     Response.End();
@@ -58,7 +58,7 @@ namespace ElGrafico
         private DataTable GetData(SqlCommand cmd)
         {
             DataTable dt = new DataTable();
-            String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ElGraficoConnection"].ConnectionString;
+            String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ElGrafico_DesaConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(strConnString);
             SqlDataAdapter sda = new SqlDataAdapter();
             cmd.CommandType = CommandType.Text;
@@ -125,12 +125,12 @@ namespace ElGrafico
                 Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
                 //insert the file into database
-                string strQuery = "insert into Revistas(img)" +
-                   " values (@img)";
+                string strQuery = "insert into Revistas(imagenTapa)" +
+                   " values (@imagenTapa)";
                 SqlCommand cmd = new SqlCommand(strQuery);
                 //cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = filename;
                 //cmd.Parameters.Add("@ContentType", SqlDbType.VarChar).Value = contenttype;
-                cmd.Parameters.Add("@img", SqlDbType.Binary).Value = bytes;
+                cmd.Parameters.Add("@imagenTapa", SqlDbType.Binary).Value = bytes;
                 InsertUpdateData(cmd);
                 lblMessage.ForeColor = System.Drawing.Color.Green;
                 lblMessage.Text = "File Uploaded Successfully";
@@ -146,7 +146,7 @@ namespace ElGrafico
         private Boolean InsertUpdateData(SqlCommand cmd)
         {
             String strConnString = System.Configuration.ConfigurationManager
-            .ConnectionStrings["ElGraficoConnection"].ConnectionString;
+            .ConnectionStrings["ElGrafico_DesaConnection"].ConnectionString;
             SqlConnection con = new SqlConnection(strConnString);
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con;

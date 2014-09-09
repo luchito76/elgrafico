@@ -93,7 +93,7 @@
     </orm:relational-naming-settings>
   </orm:orm>
   <ModelSettings xmlns="">
-    <AppConfigConnectionPropertyName>ElGraficoConnection</AppConfigConnectionPropertyName>
+    <AppConfigConnectionPropertyName>ElGrafico_DesaConnection</AppConfigConnectionPropertyName>
     <AppConfigConnectionString>data source=SALUD-PC\DESA;initial catalog=ElGrafico;integrated security=True</AppConfigConnectionString>
     <InitialCatalog>ElGrafico</InitialCatalog>
     <NamingSettings>

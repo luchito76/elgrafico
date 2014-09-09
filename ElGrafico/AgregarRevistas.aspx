@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="Content/fileinput.min.css" rel="stylesheet" />
 
     <div class="panel panel-primary" id="form">
         <div class="panel-heading">
@@ -51,19 +52,27 @@
         </div>
 
         <div class="form-group">
-            <asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
-            <asp:Button ID="btnUpload" runat="server" Text="Upload" CssClass="form_control"
-                OnClick="btnUpload_Click" />
-            <br />
-            <asp:Label ID="lblMessage" runat="server" Text=""
-                Font-Names="Arial"></asp:Label>
+            <b>
+                <asp:Label ID="lblSubirArchivo" runat="server" Text="Subir Tapa" class="col-sm-2 control-label">      
+                </asp:Label></b>
+            <div class="col-md-3">
+                <asp:FileUpload ID="FileUpload1" CssClass="file" runat="server" data-show-upload="false" />                                
+                <br />
+                <button type="submit" runat="server" onserverclick="btnUpload_Click" class="btn btn-primary kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i>Upload</button>
+                <asp:Label ID="lblMessage" runat="server" Text=""
+                    Font-Names="Arial"></asp:Label>
+            </div>
         </div>
-
     </div>
 
-    <asp:image ID="Image1" runat="server" ImageUrl ="AgregarRevistas.aspx?ImageID=1" Width="150px" Height="150px"/>
+    <asp:Image ID="Image1" runat="server" ImageUrl="AgregarRevistas.aspx?ImageID=1" Width="150px" Height="150px" />
 
     <script src="Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="Scripts/fileinput.min.js"></script>
+
+    <script>
+        $("#FileUpload1").fileinput();
+    </script>
 
     <script type="text/javascript">
         $(function () {

@@ -24,7 +24,7 @@ namespace Dominio
 {
 	public partial class ModeloDominio : OpenAccessContext, IModeloDominioUnitOfWork
 	{
-		private static string connectionStringName = @"ElGraficoConnection";
+		private static string connectionStringName = @"ElGrafico_DesaConnection";
 			
 		private static BackendConfiguration backend = GetBackendConfiguration();
 				
