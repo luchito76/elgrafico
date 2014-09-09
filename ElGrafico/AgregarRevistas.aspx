@@ -51,8 +51,8 @@
         </div>
 
         <div class="form-group">
-            <asp:FileUpload ID="FileUpload1" runat="server" />
-            <asp:Button ID="btnUpload" runat="server" Text="Upload"
+            <asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
+            <asp:Button ID="btnUpload" runat="server" Text="Upload" CssClass="form_control"
                 OnClick="btnUpload_Click" />
             <br />
             <asp:Label ID="lblMessage" runat="server" Text=""
