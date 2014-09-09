@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="ModeloDominio" namespace="Dominio" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+  <orm:orm name="ModeloDominio" backend="mssql" default-schema="dbo" xmlns:orm="http://tempuri.org/ORM">
+    <orm:namespace name="Dominio" default="true">
+      <orm:class name="Revista" uniqueId="76f4f320-bac3-4613-a89c-2350db362591">
+        <orm:table name="Revistas" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdRevista" />
+          </orm:key-generator>
+          <orm:single-field field-name="idRevista" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idRevista" property="IdRevista" behavior="readwrite" uniqueId="5328cad0-c753-49be-bfb8-8235584fd739" type="System.Int32">
+          <orm:column name="idRevista" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="numeroEdicion" property="NumeroEdicion" behavior="readwrite" uniqueId="af2314db-e2c7-4b38-8ead-9e2e63e8fc12" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="numeroEdicion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="fecha" property="Fecha" behavior="readwrite" uniqueId="705e06f5-6ece-4b64-9496-3764f6c9781a" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="fecha" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        </orm:field>
+        <orm:field name="titulo" property="Titulo" behavior="readwrite" uniqueId="e6bd70f6-eda4-49fd-b0a4-502b53a15ff7" type="System.String">
+          <orm:column name="titulo" sql-type="varchar" nullable="true" length="500" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="idDeporte" property="IdDeporte" behavior="readwrite" uniqueId="5a461aa7-b70b-4887-ba63-06cf566fc27b" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idDeporte" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="tapa" property="Tapa" behavior="readwrite" uniqueId="e6464448-66ce-444e-a92d-0f9a23922cf2" type="System.Byte[]">
+          <orm:column name="tapa" sql-type="image" nullable="true" length="0" scale="0" ado-type="LongVarBinary" />
+        </orm:field>
+        <orm:field name="img" property="Img" behavior="readwrite" uniqueId="ee75a5dc-5131-4eee-aa25-6ddef170bfc4" type="System.Byte[]">
+          <orm:column name="img" sql-type="varbinary(max)" nullable="true" length="0" scale="0" ado-type="LongVarBinary" />
+        </orm:field>
+        <orm:field name="deporte" property="Deporte" behavior="readwrite" uniqueId="a3f759d5-0e87-4b26-9d9b-324c8c62af0f" type="Dominio.Deporte">
+          <orm:reference uniqueId="1b0027dc-0acc-4b65-99be-21851a0b1937" association-name="RevistaHasDeporte">
+            <orm:sharedfield name="idDeporte" target-class="Dominio.Deporte" target-field="idDeporte" />
+            <orm:constraint name="FK__Revistas__idDepo__07F6335A" delete-action="dbdefaultrule" destination-table="Deporte" />
+          </orm:reference>
+        </orm:field>
+        <orm:index name="UQ__Revistas__2D7CAF42023D5A04" unique="true">
+          <orm:columnMapping>
+            <orm:column name="numeroEdicion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+      </orm:class>
+      <orm:class name="Deporte" uniqueId="c6ebd04e-70c9-444b-888c-92d2c526b90c">
+        <orm:table name="Deporte" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdDeporte" />
+          </orm:key-generator>
+          <orm:single-field field-name="idDeporte" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idDeporte" property="IdDeporte" behavior="readwrite" uniqueId="8536d6ca-1da7-4b23-b06f-9ee7ae5441eb" type="System.Int32">
+          <orm:column name="idDeporte" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="d017b327-23e1-43bc-afd5-93ad9845d0eb" type="System.String">
+          <orm:column name="nombre" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="revistas" property="Revistas" behavior="readwrite" uniqueId="e3809d13-dc2c-43a2-9525-205c1e567c1c" type="Dominio.Revista">
+          <orm:collection element-class="Dominio.Revista" inverse-field="deporte" order-by="" uniqueId="1b0027dc-0acc-4b65-99be-21851a0b1937" />
+        </orm:field>
+      </orm:class>
+    </orm:namespace>
+    <orm:schema schema="">
+      <orm:table name="Revistas">
+        <orm:column name="idRevista" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="numeroEdicion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="fecha" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="titulo" sql-type="varchar" nullable="true" length="500" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="idDeporte" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="tapa" sql-type="image" nullable="true" length="0" scale="0" ado-type="LongVarBinary" />
+        <orm:column name="img" sql-type="varbinary(max)" nullable="true" length="0" scale="0" ado-type="LongVarBinary" />
+        <orm:index name="UQ__Revistas__2D7CAF42023D5A04" unique="true">
+          <orm:columnMapping>
+            <orm:column name="numeroEdicion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+          </orm:columnMapping>
+        </orm:index>
+        <orm:constraint name="FK__Revistas__idDepo__07F6335A" delete-action="dbdefaultrule" destination-table="Deporte">
+          <orm:column name="idDeporte" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Deporte">
+        <orm:column name="idDeporte" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+      </orm:table>
+    </orm:schema>
+    <orm:relational-naming-settings>
+      <orm:source-strategy>Property</orm:source-strategy>
+      <orm:remove-camel-case>False</orm:remove-camel-case>
+    </orm:relational-naming-settings>
+  </orm:orm>
+  <ModelSettings xmlns="">
+    <AppConfigConnectionPropertyName>ElGraficoConnection</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>data source=SALUD-PC\DESA;initial catalog=ElGrafico;integrated security=True</AppConfigConnectionString>
+    <InitialCatalog>ElGrafico</InitialCatalog>
+    <NamingSettings>
+      <ClassRules>
+        <CaseMode>PascalCase</CaseMode>
+        <PluralizationMode>Singularize</PluralizationMode>
+      </ClassRules>
+      <FieldRules>
+        <CaseMode>CamelCase</CaseMode>
+      </FieldRules>
+      <PropertyRules>
+        <CaseMode>PascalCase</CaseMode>
+      </PropertyRules>
+      <NavigationPropertyRules />
+    </NamingSettings>
+    <CodeGenerationSettings>
+      <OutputProjectName>Dominio</OutputProjectName>
+      <MappingDefinitionType>Xml</MappingDefinitionType>
+    </CodeGenerationSettings>
+    <SchemaUpdateSettings />
+    <BackendConfigurationSettings>
+      <BackendConfiguration>
+        <Backend>MsSql</Backend>
+        <ProviderName>System.Data.SqlClient</ProviderName>
+      </BackendConfiguration>
+    </BackendConfigurationSettings>
+  </ModelSettings>
+  <Types>
+    <DomainClass Id="76f4f320-bac3-4613-a89c-2350db362591" name="Revista" namespace="Dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdRevista">
+      <Property Id="5328cad0-c753-49be-bfb8-8235584fd739" name="IdRevista" type="Int32" label="IdRevista : Int32" kind="Persistent" identity="true" fieldName="idRevista" />
+      <Property Id="705e06f5-6ece-4b64-9496-3764f6c9781a" name="Fecha" type="DateTime" label="Fecha : DateTime" nullable="true" kind="Persistent" fieldName="fecha" />
+      <Property Id="5a461aa7-b70b-4887-ba63-06cf566fc27b" name="IdDeporte" type="Int32" label="IdDeporte : Int32" nullable="true" kind="Persistent" fieldName="idDeporte" />
+      <Property Id="af2314db-e2c7-4b38-8ead-9e2e63e8fc12" name="NumeroEdicion" type="Int32" label="NumeroEdicion : Int32" nullable="true" kind="Persistent" fieldName="numeroEdicion" />
+      <Property Id="e6464448-66ce-444e-a92d-0f9a23922cf2" name="Tapa" type="Byte[]" label="Tapa : Byte[]" kind="Persistent" fieldName="tapa" />
+      <Property Id="e6bd70f6-eda4-49fd-b0a4-502b53a15ff7" name="Titulo" label="Titulo : String" kind="Persistent" fieldName="titulo" />
+      <Property Id="ee75a5dc-5131-4eee-aa25-6ddef170bfc4" name="Img" type="Byte[]" label="Img : Byte[]" kind="Persistent" fieldName="img" />
+      <AssociationTargets>
+        <Association Id="1b0027dc-0acc-4b65-99be-21851a0b1937" SourceMultiplicity="ZeroOne" name="RevistaHasDeporte">
+          <DomainClassMoniker name="/ModeloDominio/Deporte" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="e3d149c2-7949-4059-9d9a-749dcb092a93">
+              <NavigationalPropertyMoniker name="/ModeloDominio/Deporte/Revistas" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="500a553a-5b13-40c0-a424-cad4fb876430">
+              <NavigationalPropertyMoniker name="/ModeloDominio/Revista/Deporte" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="b1d96ca6-2a1c-4ba4-85ed-ff1b261855f4">
+          <NavigationalProperty Id="a3f759d5-0e87-4b26-9d9b-324c8c62af0f" name="Deporte" type="Deporte" label="Deporte : Deporte" nullable="true" kind="Persistent" fieldName="deporte" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="c6ebd04e-70c9-444b-888c-92d2c526b90c" name="Deporte" namespace="Dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdDeporte">
+      <Property Id="8536d6ca-1da7-4b23-b06f-9ee7ae5441eb" name="IdDeporte" type="Int32" label="IdDeporte : Int32" kind="Persistent" identity="true" fieldName="idDeporte" />
+      <Property Id="d017b327-23e1-43bc-afd5-93ad9845d0eb" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="cfc39430-e5ef-4080-98b9-d9259ee5129d">
+          <NavigationalProperty Id="e3809d13-dc2c-43a2-9525-205c1e567c1c" name="Revistas" type="IList&lt;Revista&gt;" label="Revistas : IList&lt;Revista&gt;" nullable="true" kind="Persistent" fieldName="revistas" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+  </Types>
+  <domainContext>
+    <domainModelHasDomainContext Id="eb5f2ca2-46cc-4c06-8424-9f674ec16a6d">
+      <domainContainer name="ModeloDominio" namespace="Dominio" showPropertiesCompartment="true">
+        <entitySetProperty name="Revistas" namespace="Dominio" type="Revista" label="Revistas : IQueryable&lt;Dominio.Revista&gt;" />
+        <entitySetProperty name="Deportes" namespace="Dominio" type="Deporte" label="Deportes : IQueryable&lt;Dominio.Deporte&gt;" />
+      </domainContainer>
+    </domainModelHasDomainContext>
+  </domainContext>
+</DomainModel>
