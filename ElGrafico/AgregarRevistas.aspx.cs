@@ -31,29 +31,30 @@ namespace ElGrafico
             ddlDeportes.Items.Insert(0, new ListItem("--Seleccione--", "0"));
         }
 
-        private void mostrarImagen() {
-            if (Request.QueryString["ImageID"] != null)
-            {
-                string strQuery = "select numeroDeEdicion, imagenTapa from revistas where idRevista=8";
-                SqlCommand cmd = new SqlCommand(strQuery);
-                cmd.Parameters.Add("@idRevista", SqlDbType.Int).Value
-                = Convert.ToInt32(Request.QueryString["ImageID"]);
-                DataTable dt = GetData(cmd);
-                if (dt != null)
-                {
-                    Byte[] bytes = (Byte[])dt.Rows[0]["imagenTapa"];
-                    Response.Buffer = true;
-                    Response.Charset = "";
-                    Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                    Response.ContentType = "jpg";// dt.Rows[0]["ContentType"].ToString();
-                    Response.AddHeader("content-disposition", "attachment;filename="
-                    + dt.Rows[0]["numeroDeEdicion"].ToString());
-                    Response.BinaryWrite(bytes);
-                    Response.Flush();
-                    Response.End();
-                }
-            }
-        }
+        //private void mostrarImagen() {
+        //    if (Request.QueryString["ImageID"] != null)
+        //    {
+        //    string pepe = Request.QueryString["ImageID"];
+        //        string strQuery = "select numeroDeEdicion, imagenTapa from revistas where idRevista=8";
+        //        SqlCommand cmd = new SqlCommand(strQuery);
+        //        cmd.Parameters.Add("@idRevista", SqlDbType.Int).Value
+        //        = Convert.ToInt32(Request.QueryString["ImageID"]);
+        //        DataTable dt = GetData(cmd);
+        //        if (dt != null)
+        //        {
+        //            Byte[] bytes = (Byte[])dt.Rows[0]["imagenTapa"];
+        //            Response.Buffer = true;
+        //            Response.Charset = "";
+        //            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        //            Response.ContentType = "jpg";// dt.Rows[0]["ContentType"].ToString();
+        //            Response.AddHeader("content-disposition", "attachment;filename="
+        //            + dt.Rows[0]["numeroDeEdicion"].ToString());
+        //            Response.BinaryWrite(bytes);
+        //            Response.Flush();
+        //            Response.End();
+        //        }
+        //    }
+        //}
 
         private DataTable GetData(SqlCommand cmd)
         {
