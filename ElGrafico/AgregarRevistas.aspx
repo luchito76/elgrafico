@@ -15,7 +15,7 @@
                 <asp:Label ID="lblNumeroEdicion" runat="server" Text="N° Edición" for="txtNumeroDeEdicion" class="col-sm-2 control-label">      
                 </asp:Label></b>
             <div class="col-sm-3">
-                <asp:TextBox runat="server" class="form-control" ID="txtNumeroDeEdicion" placeholder="N° de Edición"></asp:TextBox>
+                <asp:TextBox runat="server" class="form-control" ID="txtNumeroDeEdicion" onkeypress="return numbersonly(event);" placeholder="N° de Edición"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvNumeropDeEdicion" runat="server" ErrorMessage="Ingrese N° Edición"
                     ControlToValidate="txtNumeroDeEdicion" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
@@ -56,9 +56,9 @@
                 <asp:Label ID="lblSubirArchivo" runat="server" Text="Subir Tapa" class="col-sm-2 control-label">      
                 </asp:Label></b>
             <div class="col-md-3">
-                <asp:FileUpload ID="FileUpload1" CssClass="file" runat="server" data-show-upload="false" data-show-remove="false" />                                
+                <asp:FileUpload ID="FileUpload1" CssClass="file" runat="server" data-show-upload="false" data-show-remove="false" />
                 <br />
-                <button type="submit" runat="server" onserverclick="btnUpload_Click" class="btn btn-primary kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i>Upload</button>
+                <button id="btnUpload" type="submit" runat="server" onserverclick="btnUpload_Click" class="btn btn-primary kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i>Upload</button>
                 <asp:Label ID="lblMessage" runat="server" Text=""
                     Font-Names="Arial"></asp:Label>
             </div>
@@ -69,6 +69,16 @@
 
     <script src="Scripts/bootstrap-datetimepicker.js"></script>
     <script src="Scripts/fileinput.min.js"></script>
+
+    <script>
+        function numbersonly(e) {
+            var unicode = e.charCode ? e.charCode : e.keyCode
+            if (unicode != 8 && unicode != 44) {
+                if (unicode < 48 || unicode > 57) //if not a number
+                { return false } //disable key press    
+            }
+        }
+    </script>
 
     <script>
         $("#FileUpload1").fileinput();
@@ -87,5 +97,9 @@
                 forceParse: 0
             });
         });
+
+
     </script>
+
+
 </asp:Content>

@@ -20,7 +20,7 @@ namespace ElGrafico
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
-
+                       
             llenarListas();
         }
 
@@ -120,6 +120,6 @@ namespace ElGrafico
                     //Así ningún control se quedará sin ser limpiado.
                     limpiarControles(control.Controls);
             }
-        }
+        }        
     }
 }
