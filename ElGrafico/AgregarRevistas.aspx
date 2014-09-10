@@ -56,7 +56,7 @@
                 <asp:Label ID="lblSubirArchivo" runat="server" Text="Subir Tapa" class="col-sm-2 control-label">      
                 </asp:Label></b>
             <div class="col-md-3">
-                <asp:FileUpload ID="FileUpload1" CssClass="file" runat="server" data-show-upload="false" />                                
+                <asp:FileUpload ID="FileUpload1" CssClass="file" runat="server" data-show-upload="false" data-show-remove="false" />                                
                 <br />
                 <button type="submit" runat="server" onserverclick="btnUpload_Click" class="btn btn-primary kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i>Upload</button>
                 <asp:Label ID="lblMessage" runat="server" Text=""
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <asp:Image ID="Image1" runat="server" ImageUrl="AgregarRevistas.aspx?ImageID=1" Width="150px" Height="150px" />
+    <%--<asp:Image ID="Image1" runat="server" ImageUrl="AgregarRevistas.aspx?ImageID=1" Width="150px" Height="150px" />--%>
 
     <script src="Scripts/bootstrap-datetimepicker.js"></script>
     <script src="Scripts/fileinput.min.js"></script>

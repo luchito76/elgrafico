@@ -18,7 +18,6 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using Dominio;
 
 namespace Dominio	
 {
@@ -34,19 +33,6 @@ namespace Dominio
 			set
 			{
 				this.idRevista = value;
-			}
-		}
-		
-		private int? numeroEdicion;
-		public virtual int? NumeroEdicion
-		{
-			get
-			{
-				return this.numeroEdicion;
-			}
-			set
-			{
-				this.numeroEdicion = value;
 			}
 		}
 		
@@ -89,42 +75,42 @@ namespace Dominio
 			}
 		}
 		
-		private byte[] tapa;
-		public virtual byte[] Tapa
+		private int? numeroDeEdicion;
+		public virtual int? NumeroDeEdicion
 		{
 			get
 			{
-				return this.tapa;
+				return this.numeroDeEdicion;
 			}
 			set
 			{
-				this.tapa = value;
+				this.numeroDeEdicion = value;
 			}
 		}
 		
-		private byte[] img;
-		public virtual byte[] Img
+		private byte[] imagenTapa;
+		public virtual byte[] ImagenTapa
 		{
 			get
 			{
-				return this.img;
+				return this.imagenTapa;
 			}
 			set
 			{
-				this.img = value;
+				this.imagenTapa = value;
 			}
 		}
 		
-		private Deporte deporte;
-		public virtual Deporte Deporte
+		private int? cantidad;
+		public virtual int? Cantidad
 		{
 			get
 			{
-				return this.deporte;
+				return this.cantidad;
 			}
 			set
 			{
-				this.deporte = value;
+				this.cantidad = value;
 			}
 		}
 		

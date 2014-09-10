@@ -18,7 +18,6 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using Dominio;
 
 namespace Dominio	
 {
@@ -47,15 +46,6 @@ namespace Dominio
 			set
 			{
 				this.nombre = value;
-			}
-		}
-		
-		private IList<Revista> revistas = new List<Revista>();
-		public virtual IList<Revista> Revistas
-		{
-			get
-			{
-				return this.revistas;
 			}
 		}
 		

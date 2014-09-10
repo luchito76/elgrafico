@@ -15,6 +15,7 @@ namespace ElGrafico
     public partial class AgregarRevistas : System.Web.UI.Page
     {
         DeportesNego deportesNego = new DeportesNego();
+        RevistasNego revistaNego = new RevistasNego();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,7 +35,7 @@ namespace ElGrafico
         //private void mostrarImagen() {
         //    if (Request.QueryString["ImageID"] != null)
         //    {
-        //    string pepe = Request.QueryString["ImageID"];
+
         //        string strQuery = "select numeroDeEdicion, imagenTapa from revistas where idRevista=8";
         //        SqlCommand cmd = new SqlCommand(strQuery);
         //        cmd.Parameters.Add("@idRevista", SqlDbType.Int).Value
@@ -87,7 +88,7 @@ namespace ElGrafico
         {
             string filePath = FileUpload1.PostedFile.FileName;
             string filename = Path.GetFileName(filePath);
-            string ext = Path.GetExtension(filename);
+            string ext = Path.GetExtension(filename).ToLower();
             string contenttype = String.Empty;
 
             //Set the contenttype based on File Extension
@@ -125,23 +126,28 @@ namespace ElGrafico
                 BinaryReader br = new BinaryReader(fs);
                 Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
-                //insert the file into database
-                string strQuery = "insert into Revistas(imagenTapa)" +
-                   " values (@imagenTapa)";
-                SqlCommand cmd = new SqlCommand(strQuery);
-                //cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = filename;
-                //cmd.Parameters.Add("@ContentType", SqlDbType.VarChar).Value = contenttype;
-                cmd.Parameters.Add("@imagenTapa", SqlDbType.Binary).Value = bytes;
-                InsertUpdateData(cmd);
-                lblMessage.ForeColor = System.Drawing.Color.Green;
-                lblMessage.Text = "File Uploaded Successfully";
+                guardarRevista(bytes);                
             }
             else
             {
                 lblMessage.ForeColor = System.Drawing.Color.Red;
-                lblMessage.Text = "File format not recognised." +
-                  " Upload Image/Word/PDF/Excel formats";
+                lblMessage.Text = "No se reconoce el formato del archivo." +
+                  " Subir formatos Image/Word/PDF/Excel ";
             }
+        }
+
+        private void guardarRevista(Byte[] bytes)
+        {
+            Revista revista = new Revista();
+
+            revista.NumeroDeEdicion = int.Parse(txtNumeroDeEdicion.Text);
+            revista.Fecha = Convert.ToDateTime(dtpFecha.Text);
+            revista.Titulo = txtTitulo.Text;
+            revista.IdDeporte = int.Parse(ddlDeportes.SelectedValue);
+            revista.Cantidad = 1;
+            revista.ImagenTapa = bytes;
+
+            revistaNego.guardarRevista(revista);
         }
 
         private Boolean InsertUpdateData(SqlCommand cmd)
