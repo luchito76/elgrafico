@@ -18,6 +18,7 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
+using Dominio;
 
 namespace Dominio	
 {
@@ -111,6 +112,19 @@ namespace Dominio
 			set
 			{
 				this.cantidad = value;
+			}
+		}
+		
+		private Deporte deporte;
+		public virtual Deporte Deporte
+		{
+			get
+			{
+				return this.deporte;
+			}
+			set
+			{
+				this.deporte = value;
 			}
 		}
 		

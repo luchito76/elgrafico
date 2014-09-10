@@ -5464,10 +5464,8 @@ a.list-group-item:focus {
   color: #ffffff;
   background-color: #428bca;
   border-color: #428bca;
-}
-
-.panel-primary > .panel-heading + .panel-collapse .panel-body {
   border-top-color: #428bca;
+  margin-bottom: 15px;
 }
 
 .panel-primary > .panel-footer + .panel-collapse .panel-body {
