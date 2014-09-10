@@ -27,23 +27,9 @@ namespace ElGrafico
         {
             string json = string.Empty;
 
-            IList<ListadoDeRevistasResultSet0> lista = revistaNego.listaRevistas().ToList();
+            IList<ListadoDeRevistasResultSet0> lista = revistaNego.listaRevistas().ToList();            
 
-            List<Revista> listaRevista = new List<Revista>();
-
-            foreach (ListadoDeRevistasResultSet0 data in lista)
-            {
-                revista.NumeroDeEdicion = data.Edicion;
-                revista.Fecha = data.Fecha;
-                revista.Titulo = data.Titulo;
-                //revista.Deporte.Nombre = data.Deporte;
-                revista.Cantidad = data.Cantidad;
-                revista.ImagenTapa = data.Tapa;
-
-                listaRevista.Add(revista);
-            }
-
-            return json = JsonConvert.SerializeObject(listaRevista);
-        }
+            return json = JsonConvert.SerializeObject(lista);
+        }        
     }
 }

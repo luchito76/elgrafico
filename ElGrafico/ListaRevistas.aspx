@@ -13,9 +13,11 @@
             <table id="tbl1" data-toggle="table" class="drag_drop_grid GridSrc" data-pagination="true" data-search="true">
                 <thead>
                     <tr>
-                        <th data-field="NumeroDeEdicion" data-align="center" data-sortable="true">N° Edición</th>
+                        <th data-field="Edicion" data-align="center" data-sortable="true">N° Edición</th>
                         <th data-field="Fecha" data-align="center" data-sortable="true">Fecha</th>
                         <th data-field="Titulo" data-sortable="true" data-sorter-nombre="nombre">Título</th>
+                        <th data-field="Deporte" data-sortable="true" data-sorter-nombre="nombre">Deporte</th>
+                        <th data-field="Cantidad" data-sortable="true" data-sorter-nombre="nombre">Cantidad</th>                       
                     </tr>
                 </thead>
             </table>
