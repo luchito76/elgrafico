@@ -27,9 +27,14 @@ namespace ElGrafico
         {
             string json = string.Empty;
 
-            IList<ListadoDeRevistasResultSet0> lista = revistaNego.listaRevistas().ToList();            
+            IList<ListadoDeRevistasResultSet0> lista = revistaNego.listaRevistas().ToList();
 
             return json = JsonConvert.SerializeObject(lista);
-        }        
+        }
+
+        public string devuelveTapa()
+        {
+            return "imagenes/balanta.jpg";
+        }
     }
 }

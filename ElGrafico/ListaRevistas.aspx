@@ -17,7 +17,8 @@
                         <th data-field="Fecha" data-align="center" data-sortable="true">Fecha</th>
                         <th data-field="Titulo" data-sortable="true" data-sorter-nombre="nombre">Título</th>
                         <th data-field="Deporte" data-sortable="true" data-sorter-nombre="nombre">Deporte</th>
-                        <th data-field="Cantidad" data-sortable="true" data-sorter-nombre="nombre">Cantidad</th>                       
+                        <th data-field="Cantidad" data-sortable="true" data-sorter-nombre="nombre">Cantidad</th>
+                        <th data-field="operate" data-formatter="operateFormatter" data-events="operateEvents" data-align="center">Tapa</th>
                     </tr>
                 </thead>
             </table>
@@ -26,9 +27,28 @@
 
     <script src="Scripts/bootstrap-table.js"></script>
 
+    <script>        
+        function operateFormatter(value, row, index) {
+            return [
+            '<a class="edit ml10" href="javascript:void(0)" title="Edit">',
+                    '<img alt="" src="<%= devuelveTapa() %>" width="100px" height="120px;"/>',
+                '</a>'
+                
+            ].join('');
+        }
+
+        window.operateEvents = {
+            'click .ver': function (e, value, row, index) {                          
+                window.location = 'View.aspx?id=' + row.IdMovimiento; 
+            }
+        };
+
+    </script>
+
     <script>
-         $('#tbl1').bootstrapTable({            
+        $('#tbl1').bootstrapTable({            
             data: <%= devuelveJson() %>
             });
     </script>
+
 </asp:Content>

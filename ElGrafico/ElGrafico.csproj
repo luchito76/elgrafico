@@ -174,7 +174,11 @@
     <Content Include="Content\fileinput.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="imagenes\CicloDeVidaGit.png" />
+    <Content Include="imagenes\95años.jpg" />
+    <Content Include="imagenes\balanta.jpg" />
+    <Content Include="imagenes\mellizosalataque.jpg" />
+    <Content Include="imagenes\sabella.jpg" />
+    <Content Include="imagenes\thumbs.jpg" />
     <Content Include="ListaRevistas.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -221,6 +225,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="Upload.aspx" />
+    <Content Include="VerRevista.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
@@ -363,6 +368,13 @@
     </Compile>
     <Compile Include="Upload.aspx.designer.cs">
       <DependentUpon>Upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerRevista.aspx.cs">
+      <DependentUpon>VerRevista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerRevista.aspx.designer.cs">
+      <DependentUpon>VerRevista.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
