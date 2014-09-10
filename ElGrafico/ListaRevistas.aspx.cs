@@ -34,7 +34,7 @@ namespace ElGrafico
 
         public string devuelveTapa()
         {
-            return "imagenes/balanta.jpg";
+            return "imagenes/benditotueres.jpg";
         }
     }
 }

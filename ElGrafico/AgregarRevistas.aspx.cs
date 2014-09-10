@@ -20,7 +20,7 @@ namespace ElGrafico
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
-                       
+
             llenarListas();
         }
 
@@ -31,8 +31,19 @@ namespace ElGrafico
             ddlDeportes.Items.Insert(0, new ListItem("--Seleccione--", "0"));
         }
 
+        private void subirTapa()
+        {
+            if (FileUpload1.HasFile)
+            {
+                string fullPath = Path.Combine(Server.MapPath("~/imagenes"), FileUpload1.FileName);
+                FileUpload1.SaveAs(fullPath);
+            }
+        }
+
         protected void btnUpload_Click(object sender, EventArgs e)
         {
+            subirTapa();
+
             string filePath = FileUpload1.PostedFile.FileName;
             string filename = Path.GetFileName(filePath);
             string ext = Path.GetExtension(filename).ToLower();
@@ -120,6 +131,6 @@ namespace ElGrafico
                     //Así ningún control se quedará sin ser limpiado.
                     limpiarControles(control.Controls);
             }
-        }        
+        }
     }
 }
