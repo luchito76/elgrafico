@@ -21,7 +21,7 @@ namespace ElGrafico
         {
             if (IsPostBack) return;
 
-            llenarListas();            
+            llenarListas();
         }
 
         private void llenarListas()
@@ -29,7 +29,7 @@ namespace ElGrafico
             ddlDeportes.DataSource = deportesNego.listaDeportes();
             ddlDeportes.DataBind();
             ddlDeportes.Items.Insert(0, new ListItem("--Seleccione--", "0"));
-        }      
+        }
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
@@ -73,7 +73,9 @@ namespace ElGrafico
                 BinaryReader br = new BinaryReader(fs);
                 Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
-                guardarRevista(bytes);                
+                guardarRevista(bytes);
+
+                limpiarControles(this.Controls);
             }
             else
             {
@@ -95,6 +97,29 @@ namespace ElGrafico
             revista.ImagenTapa = bytes;
 
             revistaNego.guardarRevista(revista);
-        }        
+        }
+
+        private void limpiarControles(ControlCollection controles)
+        {
+            foreach (Control control in controles)
+            {
+                if (control is TextBox)
+                    ((TextBox)control).Text = string.Empty;
+                else if (control is DropDownList)
+                    ((DropDownList)control).ClearSelection();
+                else if (control is RadioButtonList)
+                    ((RadioButtonList)control).ClearSelection();
+                else if (control is CheckBoxList)
+                    ((CheckBoxList)control).ClearSelection();
+                else if (control is RadioButton)
+                    ((RadioButton)control).Checked = false;
+                else if (control is CheckBox)
+                    ((CheckBox)control).Checked = false;
+                else if (control.HasControls())
+                    //Esta linea detécta un Control que contenga otros Controles
+                    //Así ningún control se quedará sin ser limpiado.
+                    limpiarControles(control.Controls);
+            }
+        }
     }
 }
