@@ -16,7 +16,7 @@ namespace Negocio
             revistaRepo.guardarRevista(revista);
         }
 
-        public IEnumerable<Revista> listaRevistas()
+        public IEnumerable<ListadoDeRevistasResultSet0> listaRevistas()
         {
             return revistaRepo.listaRevistas();
         }

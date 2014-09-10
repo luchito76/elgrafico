@@ -86,6 +86,9 @@
         <orm:column name="idDeporte" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="nombre" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
       </orm:table>
+      <orm:procedure name="ListadoDeRevistas">
+        <orm:result-sets />
+      </orm:procedure>
     </orm:schema>
     <orm:relational-naming-settings>
       <orm:source-strategy>Property</orm:source-strategy>
@@ -169,4 +172,27 @@
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>
+  <domainMethods>
+    <domainModelHasDomainMethods Id="ff16ae33-c57f-4e42-80e4-b5c05c5f769d">
+      <domainMethod name="SP_ListadoDeRevistas" storedProcedureName="'ListadoDeRevistas'" generateReturnValueOverload="true">
+        <domainMethodReturnShape>
+          <domainMethodReferencesDomainMethodReturnShape Id="30e92e0d-0bc8-4701-96c8-253da453aa49">
+            <domainMethodReturnShapeMoniker name="/ModeloDominio/ListadoDeRevistasResultSet0" />
+          </domainMethodReferencesDomainMethodReturnShape>
+        </domainMethodReturnShape>
+      </domainMethod>
+    </domainModelHasDomainMethods>
+  </domainMethods>
+  <domainMethodReturnShapes>
+    <domainModelHasDomainMethodReturnShapes Id="7569340e-cb4a-44ce-8ebc-e15df104b381">
+      <domainMethodReturnShape name="ListadoDeRevistasResultSet0" namespace="Dominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
+        <Property Id="38018c30-13ee-463b-9ec6-ebe7c705263a" name="Edicion" type="System.Int32" label="Edicion : System.Int32" nullable="true" fieldName="_edicion" />
+        <Property Id="8712a74d-bd32-4f4a-bc4f-21fb889dc790" name="Fecha" type="System.DateTime" label="Fecha : System.DateTime" nullable="true" fieldName="_fecha" />
+        <Property Id="69934768-d8ad-4563-aa1c-5cf2a516bc37" name="Titulo" type="System.String" label="Titulo : System.String" nullable="true" fieldName="_titulo" />
+        <Property Id="beeadd1c-4b97-484d-b23c-bff7fb1a5f87" name="Deporte" type="System.String" label="Deporte : System.String" nullable="true" fieldName="_deporte" />
+        <Property Id="4e6d958e-4294-44fe-aba4-bad92be55ceb" name="Cantidad" type="System.Int32" label="Cantidad : System.Int32" nullable="true" fieldName="_cantidad" />
+        <Property Id="ba14486f-fbb1-48c5-a7d4-ca5bfed3e054" name="Tapa" type="System.Byte[]" label="Tapa : System.Byte[]" nullable="true" fieldName="_tapa" />
+      </domainMethodReturnShape>
+    </domainModelHasDomainMethodReturnShapes>
+  </domainMethodReturnShapes>
 </DomainModel>

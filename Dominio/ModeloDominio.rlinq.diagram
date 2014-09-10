@@ -19,7 +19,7 @@
           <elementListCompartment Id="62341d4a-f95a-4ebb-bfab-adaabca6e508" absoluteBounds="3.015, 2.7883821614583333, 1.4700000000000002, 0.44169108072916663" name="NavigationCompartment" titleTextColor="Black" itemTextColor="Black" />
         </nestedChildShapes>
       </classShape>
-      <associationConnector edgePoints="[(2.25 : 2.35253662109375); (3 : 2.35253662109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <associationConnector edgePoints="[(2.25 : 2.35253662109375); (3 : 2.35253662109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
         <AssociationMoniker Id="7b963eee-b2f2-4b50-a22c-2514610484ea" />
         <relativeChildShapes />
         <nodes>

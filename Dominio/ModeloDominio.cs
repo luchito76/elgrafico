@@ -66,6 +66,27 @@ namespace Dominio
 			}
 		}
 		
+		public IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas()
+		{
+			int returnValue;
+			return SP_ListadoDeRevistas(out returnValue);
+		}
+		
+		public IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas(out int returnValue)
+		{
+			OAParameter parameterReturnValue = new OAParameter();
+		    parameterReturnValue.Direction = ParameterDirection.ReturnValue;
+		    parameterReturnValue.ParameterName = "parameterReturnValue";
+		
+			IEnumerable<ListadoDeRevistasResultSet0> queryResult = this.ExecuteQuery<ListadoDeRevistasResultSet0>("[dbo].[ListadoDeRevistas]", CommandType.StoredProcedure, parameterReturnValue);
+		
+			returnValue = parameterReturnValue.Value == DBNull.Value 
+				? -1
+				: (int)parameterReturnValue.Value;
+		
+			return queryResult;
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -95,6 +116,8 @@ namespace Dominio
 		{
 			get;
 		}
+		IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas();
+		IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas(out int returnValue);
 	}
 }
 #pragma warning restore 1591

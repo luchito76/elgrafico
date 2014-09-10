@@ -17,9 +17,9 @@ namespace Repositorio
             dominio.SaveChanges();
         }
 
-        public IEnumerable<Revista> listaRevistas()
+        public IEnumerable<ListadoDeRevistasResultSet0> listaRevistas()
         {
-            IEnumerable<Revista> result = dominio.Revistas.OrderBy(c => c.NumeroDeEdicion).ToList();
+            IEnumerable<ListadoDeRevistasResultSet0> result = dominio.SP_ListadoDeRevistas().ToList();
 
             return result;
         }
