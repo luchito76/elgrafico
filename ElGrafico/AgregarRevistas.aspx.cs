@@ -21,8 +21,7 @@ namespace ElGrafico
         {
             if (IsPostBack) return;
 
-            llenarListas();
-            //mostrarImagen();
+            llenarListas();            
         }
 
         private void llenarListas()
@@ -30,59 +29,7 @@ namespace ElGrafico
             ddlDeportes.DataSource = deportesNego.listaDeportes();
             ddlDeportes.DataBind();
             ddlDeportes.Items.Insert(0, new ListItem("--Seleccione--", "0"));
-        }
-
-        //private void mostrarImagen() {
-        //    if (Request.QueryString["ImageID"] != null)
-        //    {
-
-        //        string strQuery = "select numeroDeEdicion, imagenTapa from revistas where idRevista=8";
-        //        SqlCommand cmd = new SqlCommand(strQuery);
-        //        cmd.Parameters.Add("@idRevista", SqlDbType.Int).Value
-        //        = Convert.ToInt32(Request.QueryString["ImageID"]);
-        //        DataTable dt = GetData(cmd);
-        //        if (dt != null)
-        //        {
-        //            Byte[] bytes = (Byte[])dt.Rows[0]["imagenTapa"];
-        //            Response.Buffer = true;
-        //            Response.Charset = "";
-        //            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        //            Response.ContentType = "jpg";// dt.Rows[0]["ContentType"].ToString();
-        //            Response.AddHeader("content-disposition", "attachment;filename="
-        //            + dt.Rows[0]["numeroDeEdicion"].ToString());
-        //            Response.BinaryWrite(bytes);
-        //            Response.Flush();
-        //            Response.End();
-        //        }
-        //    }
-        //}
-
-        private DataTable GetData(SqlCommand cmd)
-        {
-            DataTable dt = new DataTable();
-            String strConnString = System.Configuration.ConfigurationManager.ConnectionStrings["ElGrafico_DesaConnection"].ConnectionString;
-            SqlConnection con = new SqlConnection(strConnString);
-            SqlDataAdapter sda = new SqlDataAdapter();
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = con;
-            try
-            {
-                con.Open();
-                sda.SelectCommand = cmd;
-                sda.Fill(dt);
-                return dt;
-            }
-            catch
-            {
-                return null;
-            }
-            finally
-            {
-                con.Close();
-                sda.Dispose();
-                con.Dispose();
-            }
-        }
+        }      
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
@@ -148,31 +95,6 @@ namespace ElGrafico
             revista.ImagenTapa = bytes;
 
             revistaNego.guardarRevista(revista);
-        }
-
-        private Boolean InsertUpdateData(SqlCommand cmd)
-        {
-            String strConnString = System.Configuration.ConfigurationManager
-            .ConnectionStrings["ElGrafico_DesaConnection"].ConnectionString;
-            SqlConnection con = new SqlConnection(strConnString);
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = con;
-            try
-            {
-                con.Open();
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Response.Write(ex.Message);
-                return false;
-            }
-            finally
-            {
-                con.Close();
-                con.Dispose();
-            }
-        }
+        }        
     }
 }
