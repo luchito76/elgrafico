@@ -88,16 +88,42 @@ namespace Dominio
 			}
 		}
 		
-		private byte[] _tapa;
-		public virtual byte[] Tapa
+		private string _nombreImagen;
+		public virtual string NombreImagen
 		{
 			get
 			{
-				return this._tapa;
+				return this._nombreImagen;
 			}
 			set
 			{
-				this._tapa = value;
+				this._nombreImagen = value;
+			}
+		}
+		
+		private int? _largo;
+		public virtual int? Largo
+		{
+			get
+			{
+				return this._largo;
+			}
+			set
+			{
+				this._largo = value;
+			}
+		}
+		
+		private byte[] _imagen;
+		public virtual byte[] Imagen
+		{
+			get
+			{
+				return this._imagen;
+			}
+			set
+			{
+				this._imagen = value;
 			}
 		}
 		

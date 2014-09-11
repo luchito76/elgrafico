@@ -13,11 +13,12 @@
             <table id="tbl1" data-toggle="table" class="drag_drop_grid GridSrc" data-pagination="true" data-search="true">
                 <thead>
                     <tr>
-                        <th data-field="Edicion" data-align="center" data-sortable="true">N° Edición</th>
+                        <th data-field="NumeroDeEdicion" data-align="center" data-sortable="true">N° Edición</th>
                         <th data-field="Fecha" data-align="center" data-sortable="true">Fecha</th>
                         <th data-field="Titulo" data-sortable="true" data-sorter-nombre="nombre">Título</th>
                         <th data-field="Deporte" data-sortable="true" data-sorter-nombre="nombre">Deporte</th>
                         <th data-field="Cantidad" data-sortable="true" data-sorter-nombre="nombre">Cantidad</th>
+                        <th data-field="NombreTapa" data-sortable="true" data-sorter-nombre="nombre">Tapa</th>
                         <th data-field="operate" data-formatter="operateFormatter" data-events="operateEvents" data-align="center">Tapa</th>
                     </tr>
                 </thead>
@@ -29,9 +30,10 @@
 
     <script>        
         function operateFormatter(value, row, index) {
+                      
             return [
-            '<a class="edit ml10" href="javascript:void(0)" title="Edit">',
-                    '<img alt="" src="<%= devuelveTapa() %>" width="100px" height="120px;"/>',
+            '<a class="edit ml10" href="javascript:void(0)" title="' + row.Titulo + '">',
+                    '<img alt="" src=imagenes/' + row.NombreTapa + ' width="100px" height="120px;"/>',
                 '</a>'
                 
             ].join('');
@@ -48,7 +50,7 @@
     <script>
         $('#tbl1').bootstrapTable({            
             data: <%= devuelveJson() %>
-            });
+             });
     </script>
 
 </asp:Content>

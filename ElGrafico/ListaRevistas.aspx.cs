@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 using System.Data;
 using Dominio;
 using Negocio;
-using System.Collections.Generic;
 
 namespace ElGrafico
 {
@@ -18,6 +17,59 @@ namespace ElGrafico
 
         Revista revista = new Revista();
 
+        #region helper
+        public class helper
+        {
+            private int? numeroDeEdicion;
+
+            public int? NumeroDeEdicion
+            {
+                get { return numeroDeEdicion; }
+                set { numeroDeEdicion = value; }
+            }
+
+            private DateTime? fecha;
+
+            public DateTime? Fecha
+            {
+                get { return fecha; }
+                set { fecha = value; }
+            }
+
+            private string titulo;
+
+            public string Titulo
+            {
+                get { return titulo; }
+                set { titulo = value; }
+            }
+
+            private string deporte;
+
+            public string Deporte
+            {
+                get { return deporte; }
+                set { deporte = value; }
+            }
+
+            private int? cantidad;
+
+            public int? Cantidad
+            {
+                get { return cantidad; }
+                set { cantidad = value; }
+            }
+
+            private string nombreTapa;
+
+            public string NombreTapa
+            {
+                get { return nombreTapa; }
+                set { nombreTapa = value; }
+            }
+        }
+
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -29,12 +81,27 @@ namespace ElGrafico
 
             IList<ListadoDeRevistasResultSet0> lista = revistaNego.listaRevistas().ToList();
 
-            return json = JsonConvert.SerializeObject(lista);
+            List<helper> listaHelper = new List<helper>();
+
+            foreach (ListadoDeRevistasResultSet0 data in lista)
+            {
+                helper helper = new helper();
+
+                helper.NumeroDeEdicion = data.Edicion;
+                helper.Fecha = data.Fecha;
+                helper.Titulo = data.Titulo;
+                helper.Deporte = data.Deporte;
+                helper.Cantidad = data.Cantidad;
+                helper.NombreTapa = data.NombreImagen;
+
+                listaHelper.Add(helper);
+            }
+
+            return json = JsonConvert.SerializeObject(listaHelper);
         }
 
-        public string devuelveTapa()
-        {
-            return "imagenes/benditotueres.jpg";
-        }
+       
+
+       
     }
 }

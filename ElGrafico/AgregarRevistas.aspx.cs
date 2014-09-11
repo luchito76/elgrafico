@@ -16,6 +16,7 @@ namespace ElGrafico
     {
         DeportesNego deportesNego = new DeportesNego();
         RevistasNego revistaNego = new RevistasNego();
+        TapaNego tapaNego = new TapaNego();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -48,6 +49,7 @@ namespace ElGrafico
             string filename = Path.GetFileName(filePath);
             string ext = Path.GetExtension(filename).ToLower();
             string contenttype = String.Empty;
+            int largo = FileUpload1.PostedFile.ContentLength;
 
             //Set the contenttype based on File Extension
             switch (ext)
@@ -84,7 +86,7 @@ namespace ElGrafico
                 BinaryReader br = new BinaryReader(fs);
                 Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
-                guardarRevista(bytes);
+                guardarRevista(filename, largo, bytes);
 
                 limpiarControles(this.Controls);
             }
@@ -96,16 +98,27 @@ namespace ElGrafico
             }
         }
 
-        private void guardarRevista(Byte[] bytes)
+
+
+        private void guardarRevista(string nombreArchivo, int largo, Byte[] bytes)
         {
+            Tapa tapa = new Tapa();
             Revista revista = new Revista();
+
+            tapa.Nombre = nombreArchivo.Replace(" ", "");
+            tapa.Largo = largo;
+            tapa.Imagen = bytes;
+
+            tapaNego.guardarTapa(tapa);
+
+            int ultimoIdTapaInsertado = tapaNego.ultimoIdTapaInsertado().IdTapa;
 
             revista.NumeroDeEdicion = int.Parse(txtNumeroDeEdicion.Text);
             revista.Fecha = Convert.ToDateTime(dtpFecha.Text);
             revista.Titulo = txtTitulo.Text;
             revista.IdDeporte = int.Parse(ddlDeportes.SelectedValue);
             revista.Cantidad = 1;
-            revista.ImagenTapa = bytes;
+            revista.IdTapa = ultimoIdTapaInsertado;
 
             revistaNego.guardarRevista(revista);
         }

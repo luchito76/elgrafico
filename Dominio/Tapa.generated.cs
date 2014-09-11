@@ -18,21 +18,22 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
+using Dominio;
 
 namespace Dominio	
 {
-	public partial class Deporte
+	public partial class Tapa
 	{
-		private int idDeporte;
-		public virtual int IdDeporte
+		private int idTapa;
+		public virtual int IdTapa
 		{
 			get
 			{
-				return this.idDeporte;
+				return this.idTapa;
 			}
 			set
 			{
-				this.idDeporte = value;
+				this.idTapa = value;
 			}
 		}
 		
@@ -46,6 +47,41 @@ namespace Dominio
 			set
 			{
 				this.nombre = value;
+			}
+		}
+		
+		private int? largo;
+		public virtual int? Largo
+		{
+			get
+			{
+				return this.largo;
+			}
+			set
+			{
+				this.largo = value;
+			}
+		}
+		
+		private byte[] imagen;
+		public virtual byte[] Imagen
+		{
+			get
+			{
+				return this.imagen;
+			}
+			set
+			{
+				this.imagen = value;
+			}
+		}
+		
+		private IList<Revista> revistas = new List<Revista>();
+		public virtual IList<Revista> Revistas
+		{
+			get
+			{
+				return this.revistas;
 			}
 		}
 		

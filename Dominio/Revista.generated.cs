@@ -89,19 +89,6 @@ namespace Dominio
 			}
 		}
 		
-		private byte[] imagenTapa;
-		public virtual byte[] ImagenTapa
-		{
-			get
-			{
-				return this.imagenTapa;
-			}
-			set
-			{
-				this.imagenTapa = value;
-			}
-		}
-		
 		private int? cantidad;
 		public virtual int? Cantidad
 		{
@@ -115,16 +102,29 @@ namespace Dominio
 			}
 		}
 		
-		private Deporte deporte;
-		public virtual Deporte Deporte
+		private int? idTapa;
+		public virtual int? IdTapa
 		{
 			get
 			{
-				return this.deporte;
+				return this.idTapa;
 			}
 			set
 			{
-				this.deporte = value;
+				this.idTapa = value;
+			}
+		}
+		
+		private Tapa tapa;
+		public virtual Tapa Tapa
+		{
+			get
+			{
+				return this.tapa;
+			}
+			set
+			{
+				this.tapa = value;
 			}
 		}
 		

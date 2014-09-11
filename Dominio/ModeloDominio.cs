@@ -66,6 +66,14 @@ namespace Dominio
 			}
 		}
 		
+		public IQueryable<Tapa> Tapas 
+		{
+			get
+			{
+				return this.GetAll<Tapa>();
+			}
+		}
+		
 		public IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas()
 		{
 			int returnValue;
@@ -113,6 +121,10 @@ namespace Dominio
 			get;
 		}
 		IQueryable<Deporte> Deportes
+		{
+			get;
+		}
+		IQueryable<Tapa> Tapas
 		{
 			get;
 		}
