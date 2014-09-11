@@ -115,6 +115,19 @@ namespace Dominio
 			}
 		}
 		
+		private int? idEstado;
+		public virtual int? IdEstado
+		{
+			get
+			{
+				return this.idEstado;
+			}
+			set
+			{
+				this.idEstado = value;
+			}
+		}
+		
 		private Tapa tapa;
 		public virtual Tapa Tapa
 		{

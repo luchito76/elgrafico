@@ -74,6 +74,14 @@ namespace Dominio
 			}
 		}
 		
+		public IQueryable<Estado> Estados 
+		{
+			get
+			{
+				return this.GetAll<Estado>();
+			}
+		}
+		
 		public IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas()
 		{
 			int returnValue;
@@ -125,6 +133,10 @@ namespace Dominio
 			get;
 		}
 		IQueryable<Tapa> Tapas
+		{
+			get;
+		}
+		IQueryable<Estado> Estados
 		{
 			get;
 		}

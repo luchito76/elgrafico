@@ -32,6 +32,9 @@
         <orm:field name="idTapa" property="IdTapa" behavior="readwrite" uniqueId="563a89b8-d5a6-4a23-9ebb-350fd41391d0" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="idTapa" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
+        <orm:field name="idEstado" property="IdEstado" behavior="readwrite" uniqueId="67c712a4-2303-4d77-ab31-11432e9b33b6" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idEstado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
         <orm:field name="tapa" property="Tapa" behavior="readwrite" uniqueId="ed6c5986-6fcc-4eca-8a53-e672f221a103" type="Dominio.Tapa">
           <orm:reference uniqueId="64a682a6-1e08-4885-80a2-7e86050892fc" association-name="RevistaHasTapa">
             <orm:sharedfield name="idTapa" target-class="Dominio.Tapa" target-field="idTapa" />
@@ -85,6 +88,22 @@
           <orm:collection element-class="Dominio.Revista" inverse-field="tapa" order-by="" uniqueId="64a682a6-1e08-4885-80a2-7e86050892fc" />
         </orm:field>
       </orm:class>
+      <orm:class name="Estado" uniqueId="42606816-470c-483d-a736-6debd89d690c">
+        <orm:table name="Estado" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdEstado" />
+          </orm:key-generator>
+          <orm:single-field field-name="idEstado" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idEstado" property="IdEstado" behavior="readwrite" uniqueId="f78e231e-ec83-427e-979d-4846655d70fc" type="System.Int32">
+          <orm:column name="idEstado" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="d07f64b9-e5e3-4a03-91db-b100f9fc798e" type="System.String">
+          <orm:column name="nombre" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+      </orm:class>
     </orm:namespace>
     <orm:schema schema="">
       <orm:table name="Revistas">
@@ -95,6 +114,7 @@
         <orm:column name="numeroDeEdicion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="cantidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idTapa" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idEstado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:index name="UQ__Revistas__E66B9CBD023D5A04" unique="true">
           <orm:columnMapping>
             <orm:column name="numeroDeEdicion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -113,6 +133,10 @@
         <orm:column name="nombre" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
         <orm:column name="largo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="imagen" sql-type="image" nullable="true" length="0" scale="0" ado-type="LongVarBinary" />
+      </orm:table>
+      <orm:table name="Estado">
+        <orm:column name="idEstado" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
       </orm:table>
       <orm:procedure name="ListadoDeRevistas">
         <orm:result-sets />
@@ -161,6 +185,7 @@
       <Property Id="e6c81314-9dfa-48e6-b575-eadd97365e8d" name="NumeroDeEdicion" type="Int32" label="NumeroDeEdicion : Int32" nullable="true" kind="Persistent" fieldName="numeroDeEdicion" />
       <Property Id="7ae2e65a-db87-48a0-bc41-eedb0b54882a" name="Cantidad" type="Int32" label="Cantidad : Int32" nullable="true" kind="Persistent" fieldName="cantidad" />
       <Property Id="563a89b8-d5a6-4a23-9ebb-350fd41391d0" name="IdTapa" type="Int32" label="IdTapa : Int32" nullable="true" kind="Persistent" fieldName="idTapa" />
+      <Property Id="67c712a4-2303-4d77-ab31-11432e9b33b6" name="IdEstado" type="Int32" label="IdEstado : Int32" nullable="true" kind="Persistent" fieldName="idEstado" />
       <AssociationTargets>
         <Association Id="64a682a6-1e08-4885-80a2-7e86050892fc" SourceMultiplicity="ZeroOne" name="RevistaHasTapa">
           <DomainClassMoniker name="/ModeloDominio/Tapa" />
@@ -197,6 +222,10 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="42606816-470c-483d-a736-6debd89d690c" name="Estado" namespace="Dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdEstado">
+      <Property Id="f78e231e-ec83-427e-979d-4846655d70fc" name="IdEstado" type="Int32" label="IdEstado : Int32" kind="Persistent" identity="true" fieldName="idEstado" />
+      <Property Id="d07f64b9-e5e3-4a03-91db-b100f9fc798e" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="eb5f2ca2-46cc-4c06-8424-9f674ec16a6d">
@@ -204,6 +233,7 @@
         <entitySetProperty name="Revistas" namespace="Dominio" type="Revista" label="Revistas : IQueryable&lt;Dominio.Revista&gt;" />
         <entitySetProperty name="Deportes" namespace="Dominio" type="Deporte" label="Deportes : IQueryable&lt;Dominio.Deporte&gt;" />
         <entitySetProperty name="Tapas" namespace="Dominio" type="Tapa" label="Tapas : IQueryable&lt;Dominio.Tapa&gt;" />
+        <entitySetProperty name="Estados" namespace="Dominio" type="Estado" label="Estados : IQueryable&lt;Dominio.Estado&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

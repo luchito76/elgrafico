@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeportesNego.cs" />
+    <Compile Include="EstadoNego.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RevistasNego.cs" />
     <Compile Include="TapaNego.cs" />

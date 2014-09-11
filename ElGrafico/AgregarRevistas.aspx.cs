@@ -17,6 +17,7 @@ namespace ElGrafico
         DeportesNego deportesNego = new DeportesNego();
         RevistasNego revistaNego = new RevistasNego();
         TapaNego tapaNego = new TapaNego();
+        EstadoNego estadoNego = new EstadoNego();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +31,9 @@ namespace ElGrafico
             ddlDeportes.DataSource = deportesNego.listaDeportes();
             ddlDeportes.DataBind();
             ddlDeportes.Items.Insert(0, new ListItem("--Seleccione--", "0"));
+
+            ddlEstado.DataSource = estadoNego.listaEstados();
+            ddlEstado.DataBind();
         }
 
         private void subirTapa()

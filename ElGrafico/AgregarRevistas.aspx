@@ -53,6 +53,14 @@
 
         <div class="form-group">
             <b>
+                <asp:Label ID="lblEstado" runat="server" Text="Estado" for="ddlEstado" class="col-sm-2 control-label">      
+                </asp:Label></b>
+            <div class="col-sm-3">
+                <asp:DropDownList ID="ddlEstado" CssClass="form-control" DataTextField="nombre" DataValueField="idEstado" runat="server"></asp:DropDownList>
+                <asp:RequiredFieldValidator ID="rfvEstado" runat="server" ErrorMessage="Ingrese Estado" ControlToValidate="ddlEstado" ForeColor="Red"></asp:RequiredFieldValidator>
+            </div>
+
+            <b>
                 <asp:Label ID="lblSubirArchivo" runat="server" Text="Subir Tapa" class="col-sm-2 control-label">      
                 </asp:Label></b>
             <div class="col-md-3">
