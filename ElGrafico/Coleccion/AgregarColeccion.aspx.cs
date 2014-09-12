@@ -66,6 +66,11 @@ namespace ElGrafico.Coleccion
                 int ultimoIdColeccion = coleccionNego.ultimoIdColeccionInsertado().IdColeccion;
 
                 guardarDetalleColeccion(ultimoIdColeccion);
+
+                ddlColeccion.DataSource = coleccionNego.listaColecciones();
+                ddlColeccion.DataBind();
+                ddlColeccion.Items.Insert(0, new ListItem("--Seleccione--", "0"));
+                ddlColeccion.SelectedValue = ultimoIdColeccion.ToString();
             }
             else
             {
