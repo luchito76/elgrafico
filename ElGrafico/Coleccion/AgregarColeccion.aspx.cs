@@ -77,7 +77,7 @@ namespace ElGrafico.Coleccion
                 actualizaDetalleColeccion();
             }
 
-            limpiarControles();            
+            limpiarControles();
         }
 
 
@@ -90,6 +90,14 @@ namespace ElGrafico.Coleccion
             detalleColeccion.Nombre = txtTitulo.Text;
 
             coleccionNego.guardarDetalleColeccion(detalleColeccion);
+        }
+
+        private int devuelveCapituloSiguiente(int idColeccion)
+        {
+            //Se le suma uno al último capítulo para sugerirle al usuario cual es el capítulo siguiente de una colección determinada.            
+            int ultimoCapitulo = coleccionNego.ultimoCapituloXColeccion(idColeccion) + 1;
+
+            return ultimoCapitulo;
         }
 
         private void limpiarControles()
@@ -110,6 +118,13 @@ namespace ElGrafico.Coleccion
                 capaColeccionNueva.Visible = false;
                 capaColeccionVieja.Visible = true;
             }
+        }
+
+        protected void ddlColeccion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int capituloSugerido = devuelveCapituloSiguiente(int.Parse(ddlColeccion.SelectedValue));
+
+            txtCapitulo.Text = capituloSugerido.ToString();
         }
     }
 }

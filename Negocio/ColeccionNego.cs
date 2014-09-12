@@ -31,5 +31,10 @@ namespace Negocio
         {
             return coleccionRepo.listaColecciones();
         }
+
+        public int ultimoCapituloXColeccion(int idColeccion)
+        {
+            return coleccionRepo.ultimoCapituloXColeccion(idColeccion);
+        }
     }
 }

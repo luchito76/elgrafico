@@ -37,5 +37,23 @@ namespace Repositorio
 
             return result;
         }
+
+        //Devuelve el último capítulo ingresado de la colección seleccionada para sugerir al usuario el capítulo siguiente que tiene que ingresar.
+        public int ultimoCapituloXColeccion(int idColeccion)
+        {
+
+            int ultimoCapitulo = 0;
+
+            IList<DetalleColeccion> lista = dominio.DetalleColeccions.Where(c => c.IdColeccion == idColeccion).ToList();
+
+            if (lista.Count > 0)
+            {
+                IEnumerable<DetalleColeccion> result = dominio.DetalleColeccions;
+                ultimoCapitulo = int.Parse(result.Where(c => c.IdColeccion == idColeccion).Last().Capitulo.ToString());
+            }
+
+            return ultimoCapitulo;
+        }
+
     }
 }

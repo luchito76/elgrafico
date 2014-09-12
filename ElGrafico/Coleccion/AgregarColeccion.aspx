@@ -18,12 +18,14 @@
                 </label>
             </div>
 
-            <div id="capaColeccionVieja" runat="server" >
+            <div id="capaColeccionVieja" runat="server">
                 <b>
                     <asp:Label ID="lblColeccion" runat="server" Text="Colecciones" for="ddlColeccion" class="col-sm-2 control-label">      
                     </asp:Label></b>
                 <div class="col-sm-3">
-                    <asp:DropDownList ID="ddlColeccion" CssClass="col-md-4 form-control" DataTextField="nombre" DataValueField="idColeccion" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlColeccion" CssClass="col-md-4 form-control" DataTextField="nombre" DataValueField="idColeccion"
+                        OnSelectedIndexChanged="ddlColeccion_SelectedIndexChanged" AutoPostBack="true" runat="server">
+                    </asp:DropDownList>
                 </div>
             </div>
         </div>
