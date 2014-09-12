@@ -26,5 +26,10 @@ namespace Negocio
         {
             coleccionRepo.guardarDetalleColeccion(detalleColeccion);
         }
+
+        public IEnumerable<Coleccion> listaColecciones()
+        {
+            return coleccionRepo.listaColecciones();
+        }
     }
 }

@@ -13,6 +13,60 @@ namespace ElGrafico.Coleccion {
     public partial class AgregarColeccion {
         
         /// <summary>
+        /// lblColeccionNueva control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblColeccionNueva;
+        
+        /// <summary>
+        /// chkColeccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkColeccion;
+        
+        /// <summary>
+        /// capaColeccionVieja control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl capaColeccionVieja;
+        
+        /// <summary>
+        /// lblColeccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblColeccion;
+        
+        /// <summary>
+        /// ddlColeccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlColeccion;
+        
+        /// <summary>
+        /// capaColeccionNueva control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl capaColeccionNueva;
+        
+        /// <summary>
         /// lblNombreColeccion control.
         /// </summary>
         /// <remarks>

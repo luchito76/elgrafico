@@ -9,6 +9,27 @@
 
         <div class="form-group">
             <b>
+                <asp:Label ID="lblColeccionNueva" runat="server" Text="Colección Nueva?" for="option1" class="col-sm-2 control-label">      
+                </asp:Label></b>
+            <div class="col-sm-3">
+                <label for="chkColeccionNueva" class="checkbox inline">
+                    <%--<input id="chkColeccionNueva" type="checkbox" value="coleccionNueva" ServerChange="chkColeccionNueva_CheckedChanged"  runat="server" />--%>
+                    <asp:CheckBox ID="chkColeccion" OnCheckedChanged="chkColeccionNueva_CheckedChanged" AutoPostBack="true" runat="server" />
+                </label>
+            </div>
+
+            <div id="capaColeccionVieja" runat="server" >
+                <b>
+                    <asp:Label ID="lblColeccion" runat="server" Text="Colecciones" for="ddlColeccion" class="col-sm-2 control-label">      
+                    </asp:Label></b>
+                <div class="col-sm-3">
+                    <asp:DropDownList ID="ddlColeccion" CssClass="col-md-4 form-control" DataTextField="nombre" DataValueField="idColeccion" runat="server"></asp:DropDownList>
+                </div>
+            </div>
+        </div>
+
+        <div id="capaColeccionNueva" runat="server" class="form-group" visible="false">
+            <b>
                 <asp:Label ID="lblNombreColeccion" runat="server" Text="Nombre de Colección" for="txtNombreColeccion" class="col-sm-2 control-label">      
                 </asp:Label></b>
             <div class="col-sm-3">
@@ -45,7 +66,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-4">
-                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary" OnClick="btnGuardar_Click" />                
+                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary" OnClick="btnGuardar_Click" />
             </div>
         </div>
     </div>

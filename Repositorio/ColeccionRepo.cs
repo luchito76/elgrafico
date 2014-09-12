@@ -30,5 +30,12 @@ namespace Repositorio
             dominio.Add(detalleColeccion);
             dominio.SaveChanges();
         }
+
+        public IEnumerable<Coleccion> listaColecciones()
+        {
+            IEnumerable<Coleccion> result = dominio.Coleccions.ToList();
+
+            return result;
+        }
     }
 }
