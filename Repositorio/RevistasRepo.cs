@@ -23,5 +23,12 @@ namespace Repositorio
 
             return result;
         }
+
+        public IEnumerable<Revista> listaRevistaXIdRevista(int idRevista)
+        {
+            IEnumerable<Revista> result = dominio.Revistas.Where(c => c.IdRevista == idRevista).ToList();
+
+            return result;
+        }
     }
 }

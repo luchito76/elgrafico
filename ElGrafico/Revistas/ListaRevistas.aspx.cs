@@ -20,6 +20,14 @@ namespace ElGrafico
         #region helper
         public class helper
         {
+            private int? idRevista;
+
+            public int? IdRevista
+            {
+                get { return idRevista; }
+                set { idRevista = value; }
+            }
+
             private int? numeroDeEdicion;
 
             public int? NumeroDeEdicion
@@ -87,6 +95,7 @@ namespace ElGrafico
             {
                 helper helper = new helper();
 
+                helper.IdRevista = data.idRevista;
                 helper.NumeroDeEdicion = data.Edicion;
                 helper.Fecha = data.Fecha;
                 helper.Titulo = data.Titulo;
@@ -100,8 +109,8 @@ namespace ElGrafico
             return json = JsonConvert.SerializeObject(listaHelper);
         }
 
-       
 
-       
+
+
     }
 }

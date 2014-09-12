@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaRevistas.aspx.cs" Inherits="ElGrafico.ListaRevistas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
- 
+
     <link href="../Content/bootstrap-table.css" rel="stylesheet" />
 
     <div class="panel panel-primary" id="form">
@@ -13,6 +13,7 @@
             <table id="tbl1" data-toggle="table" class="drag_drop_grid GridSrc" data-pagination="true" data-search="true">
                 <thead>
                     <tr>
+                        <th data-field="IdRevista" data-align="center" data-sortable="true">ID</th>
                         <th data-field="NumeroDeEdicion" data-align="center" data-sortable="true">N° Edición</th>
                         <th data-field="Fecha" data-align="center" data-sortable="true">Fecha</th>
                         <th data-field="Titulo" data-sortable="true" data-sorter-nombre="nombre">Título</th>
@@ -32,7 +33,7 @@
         function operateFormatter(value, row, index) {
                       
             return [
-            '<a class="edit ml10" href="javascript:void(0)" title="' + row.Titulo + '">',
+            '<a class="ver ml10" href="javascript:void(0)" title="' + row.Titulo + '">',
                     '<img alt="" src=../imagenes/' + row.NombreTapa + ' width="100px" height="120px;"/>',
                 '</a>'
                 
@@ -41,7 +42,7 @@
 
         window.operateEvents = {
             'click .ver': function (e, value, row, index) {                          
-                window.location = 'View.aspx?id=' + row.IdMovimiento; 
+                window.location = 'VerRevista.aspx?idRevista=' + row.IdRevista; 
             }
         };
 
@@ -50,7 +51,7 @@
     <script>
         $('#tbl1').bootstrapTable({            
             data: <%= devuelveJson() %>
-             });
+            });
     </script>
 
 </asp:Content>

@@ -41,6 +41,18 @@
             <orm:constraint name="FK__Revistas__idTapa__0CBAE877" delete-action="dbdefaultrule" destination-table="Tapas" />
           </orm:reference>
         </orm:field>
+        <orm:field name="deporte" property="Deporte" behavior="readwrite" uniqueId="3242a393-68aa-4fd6-a77c-17852d78b9d4" type="Dominio.Deporte">
+          <orm:reference uniqueId="44a42745-1561-4a06-b4bd-d8426d6af624" association-name="RevistaHasDeporte">
+            <orm:sharedfield name="idDeporte" target-class="Dominio.Deporte" target-field="idDeporte" />
+            <orm:constraint name="FK__Revistas__idDepo__1BFD2C07" delete-action="dbdefaultrule" destination-table="Deporte" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="estado" property="Estado" behavior="readwrite" uniqueId="d73955ec-3d8c-44f5-b241-76a2695c16f8" type="Dominio.Estado">
+          <orm:reference uniqueId="5547f9ba-f988-457d-921a-719bbdbac0cc" association-name="RevistaHasEstado">
+            <orm:sharedfield name="idEstado" target-class="Dominio.Estado" target-field="idEstado" />
+            <orm:constraint name="FK__Revistas__idEsta__1CF15040" delete-action="dbdefaultrule" destination-table="Estado" />
+          </orm:reference>
+        </orm:field>
         <orm:index name="UQ__Revistas__E66B9CBD023D5A04" unique="true">
           <orm:columnMapping>
             <orm:column name="numeroDeEdicion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -61,6 +73,9 @@
         </orm:field>
         <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="d017b327-23e1-43bc-afd5-93ad9845d0eb" type="System.String">
           <orm:column name="nombre" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="revistas" property="Revistas" behavior="readwrite" uniqueId="0c2eaee3-c336-4fad-9dbc-2db5090cb5f0" type="Dominio.Revista">
+          <orm:collection element-class="Dominio.Revista" inverse-field="deporte" order-by="" uniqueId="44a42745-1561-4a06-b4bd-d8426d6af624" />
         </orm:field>
       </orm:class>
       <orm:class name="Tapa" uniqueId="1bf11a22-5574-436f-a845-552f87926049">
@@ -102,6 +117,9 @@
         </orm:field>
         <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="d07f64b9-e5e3-4a03-91db-b100f9fc798e" type="System.String">
           <orm:column name="nombre" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="revistas" property="Revistas" behavior="readwrite" uniqueId="2e0b8d50-a482-403e-8da0-5409c0c3e99d" type="Dominio.Revista">
+          <orm:collection element-class="Dominio.Revista" inverse-field="estado" order-by="" uniqueId="5547f9ba-f988-457d-921a-719bbdbac0cc" />
         </orm:field>
       </orm:class>
       <orm:class name="DetalleColeccion" uniqueId="32cf1ad2-ef64-47c6-8519-68118e396f7f">
@@ -173,6 +191,12 @@
         <orm:constraint name="FK__Revistas__idTapa__0CBAE877" delete-action="dbdefaultrule" destination-table="Tapas">
           <orm:column name="idTapa" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
+        <orm:constraint name="FK__Revistas__idDepo__1BFD2C07" delete-action="dbdefaultrule" destination-table="Deporte">
+          <orm:column name="idDeporte" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK__Revistas__idEsta__1CF15040" delete-action="dbdefaultrule" destination-table="Estado">
+          <orm:column name="idEstado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
       </orm:table>
       <orm:table name="Deporte">
         <orm:column name="idDeporte" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -213,7 +237,7 @@
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>ElGrafico_DesaConnection</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>data source=LUCHITO-PC\CUOTASYSTEM;initial catalog=ElGrafico_Desa;user id=sa;password=zapala76</AppConfigConnectionString>
+    <AppConfigConnectionString>data source=SALUD-PC\DESA;initial catalog=ElGrafico_Desa;integrated security=True</AppConfigConnectionString>
     <InitialCatalog>ElGrafico</InitialCatalog>
     <NamingSettings>
       <ClassRules>
@@ -264,16 +288,53 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="44a42745-1561-4a06-b4bd-d8426d6af624" SourceMultiplicity="ZeroOne" name="RevistaHasDeporte">
+          <DomainClassMoniker name="/ModeloDominio/Deporte" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="4d70b7af-3e5e-41d3-bdd2-868c323bf2d0">
+              <NavigationalPropertyMoniker name="/ModeloDominio/Deporte/Revistas" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="9483bda8-0f5c-4b3d-96a9-b91b7ea347e9">
+              <NavigationalPropertyMoniker name="/ModeloDominio/Revista/Deporte" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="5547f9ba-f988-457d-921a-719bbdbac0cc" SourceMultiplicity="ZeroOne" name="RevistaHasEstado">
+          <DomainClassMoniker name="/ModeloDominio/Estado" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="66b1f7f1-4489-4f4f-ae67-99f0e30e7f08">
+              <NavigationalPropertyMoniker name="/ModeloDominio/Estado/Revistas" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="7cc5104e-6bfa-47f9-9d84-e3875680730b">
+              <NavigationalPropertyMoniker name="/ModeloDominio/Revista/Estado" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="c7c7fe21-5900-4e08-8453-da0964a076cc">
           <NavigationalProperty Id="ed6c5986-6fcc-4eca-8a53-e672f221a103" name="Tapa" type="Tapa" label="Tapa : Tapa" nullable="true" kind="Persistent" fieldName="tapa" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="afe7b69e-0b8a-4198-9a0f-afc5ca659e25">
+          <NavigationalProperty Id="3242a393-68aa-4fd6-a77c-17852d78b9d4" name="Deporte" type="Deporte" label="Deporte : Deporte" nullable="true" kind="Persistent" fieldName="deporte" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="669ef14b-578a-4461-871c-693b6b524a43">
+          <NavigationalProperty Id="d73955ec-3d8c-44f5-b241-76a2695c16f8" name="Estado" type="Estado" label="Estado : Estado" nullable="true" kind="Persistent" fieldName="estado" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="c6ebd04e-70c9-444b-888c-92d2c526b90c" name="Deporte" namespace="Dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdDeporte">
       <Property Id="8536d6ca-1da7-4b23-b06f-9ee7ae5441eb" name="IdDeporte" type="Int32" label="IdDeporte : Int32" kind="Persistent" identity="true" fieldName="idDeporte" />
       <Property Id="d017b327-23e1-43bc-afd5-93ad9845d0eb" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="129a85ee-ef0d-407f-bcff-bd2b228efd0b">
+          <NavigationalProperty Id="0c2eaee3-c336-4fad-9dbc-2db5090cb5f0" name="Revistas" type="IList&lt;Revista&gt;" label="Revistas : IList&lt;Revista&gt;" nullable="true" kind="Persistent" fieldName="revistas" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
     </DomainClass>
     <DomainClass Id="1bf11a22-5574-436f-a845-552f87926049" name="Tapa" namespace="Dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdTapa">
       <Property Id="6b28fea9-4be6-4730-8439-9b646fe4748b" name="IdTapa" type="Int32" label="IdTapa : Int32" kind="Persistent" identity="true" fieldName="idTapa" />
@@ -289,6 +350,11 @@
     <DomainClass Id="42606816-470c-483d-a736-6debd89d690c" name="Estado" namespace="Dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdEstado">
       <Property Id="f78e231e-ec83-427e-979d-4846655d70fc" name="IdEstado" type="Int32" label="IdEstado : Int32" kind="Persistent" identity="true" fieldName="idEstado" />
       <Property Id="d07f64b9-e5e3-4a03-91db-b100f9fc798e" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="d7580473-daab-4e87-b34d-90a1032738f2">
+          <NavigationalProperty Id="2e0b8d50-a482-403e-8da0-5409c0c3e99d" name="Revistas" type="IList&lt;Revista&gt;" label="Revistas : IList&lt;Revista&gt;" nullable="true" kind="Persistent" fieldName="revistas" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
     </DomainClass>
     <DomainClass Id="32cf1ad2-ef64-47c6-8519-68118e396f7f" name="DetalleColeccion" namespace="Dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdDetalleColeccion">
       <Property Id="07de594f-b480-4ea7-bdd8-2a77903c0cea" name="IdDetalleColeccion" type="Int32" label="IdDetalleColeccion : Int32" kind="Persistent" identity="true" fieldName="idDetalleColeccion" />
@@ -343,7 +409,7 @@
     <domainModelHasDomainMethods Id="ff16ae33-c57f-4e42-80e4-b5c05c5f769d">
       <domainMethod name="SP_ListadoDeRevistas" storedProcedureName="'ListadoDeRevistas'" generateReturnValueOverload="true">
         <domainMethodReturnShape>
-          <domainMethodReferencesDomainMethodReturnShape Id="2b18140b-23ee-49b1-817e-4fe40e571cc8">
+          <domainMethodReferencesDomainMethodReturnShape Id="8d3b7478-9210-46df-a202-02f895073454">
             <domainMethodReturnShapeMoniker name="/ModeloDominio/ListadoDeRevistasResultSet0" />
           </domainMethodReferencesDomainMethodReturnShape>
         </domainMethodReturnShape>
@@ -351,16 +417,17 @@
     </domainModelHasDomainMethods>
   </domainMethods>
   <domainMethodReturnShapes>
-    <domainModelHasDomainMethodReturnShapes Id="ef288e6b-26d7-41cd-8033-2820738436ed">
+    <domainModelHasDomainMethodReturnShapes Id="96c8ef7b-98bc-402d-a238-fbdfdbcf87dd">
       <domainMethodReturnShape name="ListadoDeRevistasResultSet0" namespace="Dominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
-        <Property Id="4784448f-07dc-4410-b1eb-c881131147bb" name="Edicion" type="System.Int32" label="Edicion : System.Int32" nullable="true" fieldName="_edicion" />
-        <Property Id="6e49386a-cd91-489f-aff3-993dcfeda0e2" name="Fecha" type="System.DateTime" label="Fecha : System.DateTime" nullable="true" fieldName="_fecha" />
-        <Property Id="6571f895-3ba7-40cc-8d4f-b6a3d5f4a680" name="Titulo" type="System.String" label="Titulo : System.String" nullable="true" fieldName="_titulo" />
-        <Property Id="d18b99a7-ff18-4650-a257-d3e4f2668ef1" name="Deporte" type="System.String" label="Deporte : System.String" nullable="true" fieldName="_deporte" />
-        <Property Id="e1f57481-d0d5-4af8-a191-e6f8a549f33a" name="Cantidad" type="System.Int32" label="Cantidad : System.Int32" nullable="true" fieldName="_cantidad" />
-        <Property Id="b18dafe6-71e6-4e24-b044-6165569da23e" name="NombreImagen" type="System.String" label="NombreImagen : System.String" nullable="true" fieldName="_nombreImagen" />
-        <Property Id="0f7fc3a1-b7e0-4b82-87c6-aed714569c80" name="Largo" type="System.Int32" label="Largo : System.Int32" nullable="true" fieldName="_largo" />
-        <Property Id="3e9ae7f0-2599-44c8-b6db-b9217d9e6f9a" name="Imagen" type="System.Byte[]" label="Imagen : System.Byte[]" nullable="true" fieldName="_imagen" />
+        <Property Id="e08f678d-7c6d-4b86-bd20-5b91f28f7068" name="idRevista" type="System.Int32" label="idRevista : System.Int32" fieldName="_idRevista" />
+        <Property Id="21cb9de0-e17c-4dc8-80d5-e2152d1820a9" name="Edicion" type="System.Int32" label="Edicion : System.Int32" nullable="true" fieldName="_edicion" />
+        <Property Id="bfae4286-e930-4b92-be26-5b0889871b11" name="Fecha" type="System.DateTime" label="Fecha : System.DateTime" nullable="true" fieldName="_fecha" />
+        <Property Id="5eef72ba-9e53-41d4-8d43-41bac24c3333" name="Titulo" type="System.String" label="Titulo : System.String" nullable="true" fieldName="_titulo" />
+        <Property Id="dd8e7143-b16c-445d-ab08-b9e02067ee2e" name="Deporte" type="System.String" label="Deporte : System.String" nullable="true" fieldName="_deporte" />
+        <Property Id="21ccc4b4-5819-4f22-a7cc-1b2c0380002a" name="Cantidad" type="System.Int32" label="Cantidad : System.Int32" nullable="true" fieldName="_cantidad" />
+        <Property Id="abf8ab75-2111-4b68-81e2-0d73e0d72fa7" name="NombreImagen" type="System.String" label="NombreImagen : System.String" nullable="true" fieldName="_nombreImagen" />
+        <Property Id="accf3293-f67a-4210-88e4-b24ed0726cc6" name="Largo" type="System.Int32" label="Largo : System.Int32" nullable="true" fieldName="_largo" />
+        <Property Id="8026451b-dde2-4416-8db6-be3a587ee5a2" name="Imagen" type="System.Byte[]" label="Imagen : System.Byte[]" nullable="true" fieldName="_imagen" />
       </domainMethodReturnShape>
     </domainModelHasDomainMethodReturnShapes>
   </domainMethodReturnShapes>

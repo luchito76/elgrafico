@@ -141,6 +141,32 @@ namespace Dominio
 			}
 		}
 		
+		private Deporte deporte;
+		public virtual Deporte Deporte
+		{
+			get
+			{
+				return this.deporte;
+			}
+			set
+			{
+				this.deporte = value;
+			}
+		}
+		
+		private Estado estado;
+		public virtual Estado Estado
+		{
+			get
+			{
+				return this.estado;
+			}
+			set
+			{
+				this.estado = value;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

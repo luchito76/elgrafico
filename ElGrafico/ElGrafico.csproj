@@ -226,7 +226,7 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="Upload.aspx" />
-    <Content Include="VerRevista.aspx" />
+    <Content Include="Revistas\VerRevista.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
@@ -377,11 +377,11 @@
     <Compile Include="Upload.aspx.designer.cs">
       <DependentUpon>Upload.aspx</DependentUpon>
     </Compile>
-    <Compile Include="VerRevista.aspx.cs">
+    <Compile Include="Revistas\VerRevista.aspx.cs">
       <DependentUpon>VerRevista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="VerRevista.aspx.designer.cs">
+    <Compile Include="Revistas\VerRevista.aspx.designer.cs">
       <DependentUpon>VerRevista.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">

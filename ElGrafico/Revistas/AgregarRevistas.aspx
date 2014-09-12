@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-
+    
     <%--<asp:Image ID="Image1" runat="server" ImageUrl="AgregarRevistas.aspx?ImageID=1" Width="150px" Height="150px" />--%>
 
     <script src="../Scripts/bootstrap-datetimepicker.js"></script>

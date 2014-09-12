@@ -20,5 +20,10 @@ namespace Negocio
         {
             return revistaRepo.listaRevistas();
         }
+
+        public IEnumerable<Revista> listaRevistaXIdRevista(int idRevista)
+        {
+            return revistaRepo.listaRevistaXIdRevista(idRevista);
+        }
     }
 }

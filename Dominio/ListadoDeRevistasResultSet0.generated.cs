@@ -23,6 +23,19 @@ namespace Dominio
 {
 	public partial class ListadoDeRevistasResultSet0
 	{
+		private int _idRevista;
+		public virtual int idRevista
+		{
+			get
+			{
+				return this._idRevista;
+			}
+			set
+			{
+				this._idRevista = value;
+			}
+		}
+		
 		private int? _edicion;
 		public virtual int? Edicion
 		{
