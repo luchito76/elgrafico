@@ -82,6 +82,22 @@ namespace Dominio
 			}
 		}
 		
+		public IQueryable<DetalleColeccion> DetalleColeccions 
+		{
+			get
+			{
+				return this.GetAll<DetalleColeccion>();
+			}
+		}
+		
+		public IQueryable<Coleccion> Coleccions 
+		{
+			get
+			{
+				return this.GetAll<Coleccion>();
+			}
+		}
+		
 		public IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas()
 		{
 			int returnValue;
@@ -137,6 +153,14 @@ namespace Dominio
 			get;
 		}
 		IQueryable<Estado> Estados
+		{
+			get;
+		}
+		IQueryable<DetalleColeccion> DetalleColeccions
+		{
+			get;
+		}
+		IQueryable<Coleccion> Coleccions
 		{
 			get;
 		}

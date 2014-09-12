@@ -47,6 +47,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColeccionRepo.cs" />
     <Compile Include="DeportesRepo.cs" />
     <Compile Include="EstadoRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

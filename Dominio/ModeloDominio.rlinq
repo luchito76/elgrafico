@@ -104,6 +104,56 @@
           <orm:column name="nombre" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
         </orm:field>
       </orm:class>
+      <orm:class name="DetalleColeccion" uniqueId="32cf1ad2-ef64-47c6-8519-68118e396f7f">
+        <orm:table name="DetalleColeccion" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdDetalleColeccion" />
+          </orm:key-generator>
+          <orm:single-field field-name="idDetalleColeccion" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idDetalleColeccion" property="IdDetalleColeccion" behavior="readwrite" uniqueId="07de594f-b480-4ea7-bdd8-2a77903c0cea" type="System.Int32">
+          <orm:column name="idDetalleColeccion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idColeccion" property="IdColeccion" behavior="readwrite" uniqueId="0058b68b-198a-41e3-88b3-3a063e66b727" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idColeccion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="capitulo" property="Capitulo" behavior="readwrite" uniqueId="36d5f7e2-4fc7-442c-8bf8-ea0c32225fae" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="capitulo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="65c1b126-93d6-4094-9eb9-aadf6de55ba4" type="System.String">
+          <orm:column name="nombre" sql-type="varchar" nullable="true" length="100" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="coleccion" property="Coleccion" behavior="readwrite" uniqueId="d2b0bddd-5405-4971-9777-c80605e24a8f" type="Dominio.Coleccion">
+          <orm:reference uniqueId="774f4052-20ed-46b0-a279-0dc1aab0e907" association-name="DetalleColeccionHasColeccion">
+            <orm:sharedfield name="idColeccion" target-class="Dominio.Coleccion" target-field="idColeccion" />
+            <orm:constraint name="FK__DetalleCo__idCol__1920BF5C" delete-action="dbdefaultrule" destination-table="Coleccion" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="Coleccion" uniqueId="0578805d-204a-4960-82ea-e63e79723f68">
+        <orm:table name="Coleccion" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdColeccion" />
+          </orm:key-generator>
+          <orm:single-field field-name="idColeccion" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idColeccion" property="IdColeccion" behavior="readwrite" uniqueId="69363542-dd18-4fda-8300-3915df801d1f" type="System.Int32">
+          <orm:column name="idColeccion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="cb1d31c4-7742-435b-a410-1c9a8d24e43a" type="System.String">
+          <orm:column name="nombre" sql-type="varchar" nullable="true" length="100" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="estado" property="Estado" behavior="readwrite" uniqueId="d2db8f96-9405-4ba5-82cc-7cf4717ecdc4" type="System.String">
+          <orm:column name="estado" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="detalleColeccions" property="DetalleColeccions" behavior="readwrite" uniqueId="0cbbc9b2-8298-4370-836c-06f60361ab93" type="Dominio.DetalleColeccion">
+          <orm:collection element-class="Dominio.DetalleColeccion" inverse-field="coleccion" order-by="" uniqueId="774f4052-20ed-46b0-a279-0dc1aab0e907" />
+        </orm:field>
+      </orm:class>
     </orm:namespace>
     <orm:schema schema="">
       <orm:table name="Revistas">
@@ -137,6 +187,20 @@
       <orm:table name="Estado">
         <orm:column name="idEstado" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="nombre" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
+      </orm:table>
+      <orm:table name="DetalleColeccion">
+        <orm:column name="idDetalleColeccion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="idColeccion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="capitulo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar" nullable="true" length="100" scale="0" ado-type="StringVariableLength" />
+        <orm:constraint name="FK__DetalleCo__idCol__1920BF5C" delete-action="dbdefaultrule" destination-table="Coleccion">
+          <orm:column name="idColeccion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Coleccion">
+        <orm:column name="idColeccion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar" nullable="true" length="100" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="estado" sql-type="varchar" nullable="true" length="20" scale="0" ado-type="StringVariableLength" />
       </orm:table>
       <orm:procedure name="ListadoDeRevistas">
         <orm:result-sets />
@@ -226,6 +290,42 @@
       <Property Id="f78e231e-ec83-427e-979d-4846655d70fc" name="IdEstado" type="Int32" label="IdEstado : Int32" kind="Persistent" identity="true" fieldName="idEstado" />
       <Property Id="d07f64b9-e5e3-4a03-91db-b100f9fc798e" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
     </DomainClass>
+    <DomainClass Id="32cf1ad2-ef64-47c6-8519-68118e396f7f" name="DetalleColeccion" namespace="Dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdDetalleColeccion">
+      <Property Id="07de594f-b480-4ea7-bdd8-2a77903c0cea" name="IdDetalleColeccion" type="Int32" label="IdDetalleColeccion : Int32" kind="Persistent" identity="true" fieldName="idDetalleColeccion" />
+      <Property Id="36d5f7e2-4fc7-442c-8bf8-ea0c32225fae" name="Capitulo" type="Int32" label="Capitulo : Int32" nullable="true" kind="Persistent" fieldName="capitulo" />
+      <Property Id="0058b68b-198a-41e3-88b3-3a063e66b727" name="IdColeccion" type="Int32" label="IdColeccion : Int32" nullable="true" kind="Persistent" fieldName="idColeccion" />
+      <Property Id="65c1b126-93d6-4094-9eb9-aadf6de55ba4" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <AssociationTargets>
+        <Association Id="774f4052-20ed-46b0-a279-0dc1aab0e907" SourceMultiplicity="ZeroOne" name="DetalleColeccionHasColeccion">
+          <DomainClassMoniker name="/ModeloDominio/Coleccion" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="6b4cc7fa-e3b4-4c66-99b0-508d0064f875">
+              <NavigationalPropertyMoniker name="/ModeloDominio/Coleccion/DetalleColeccions" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="ffac8ec5-0bf6-4072-94f9-e07983a551a1">
+              <NavigationalPropertyMoniker name="/ModeloDominio/DetalleColeccion/Coleccion" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="9fdbf848-06a4-4c6a-bc7c-49b9ab754cb2">
+          <NavigationalProperty Id="d2b0bddd-5405-4971-9777-c80605e24a8f" name="Coleccion" type="Coleccion" label="Coleccion : Coleccion" nullable="true" kind="Persistent" fieldName="coleccion" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="0578805d-204a-4960-82ea-e63e79723f68" name="Coleccion" namespace="Dominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdColeccion">
+      <Property Id="69363542-dd18-4fda-8300-3915df801d1f" name="IdColeccion" type="Int32" label="IdColeccion : Int32" kind="Persistent" identity="true" fieldName="idColeccion" />
+      <Property Id="cb1d31c4-7742-435b-a410-1c9a8d24e43a" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <Property Id="d2db8f96-9405-4ba5-82cc-7cf4717ecdc4" name="Estado" label="Estado : String" kind="Persistent" fieldName="estado" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="c492086a-ca9f-4456-bcf8-84397a92a919">
+          <NavigationalProperty Id="0cbbc9b2-8298-4370-836c-06f60361ab93" name="DetalleColeccions" type="IList&lt;DetalleColeccion&gt;" label="DetalleColeccions : IList&lt;DetalleColeccion&gt;" nullable="true" kind="Persistent" fieldName="detalleColeccions" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="eb5f2ca2-46cc-4c06-8424-9f674ec16a6d">
@@ -234,6 +334,8 @@
         <entitySetProperty name="Deportes" namespace="Dominio" type="Deporte" label="Deportes : IQueryable&lt;Dominio.Deporte&gt;" />
         <entitySetProperty name="Tapas" namespace="Dominio" type="Tapa" label="Tapas : IQueryable&lt;Dominio.Tapa&gt;" />
         <entitySetProperty name="Estados" namespace="Dominio" type="Estado" label="Estados : IQueryable&lt;Dominio.Estado&gt;" />
+        <entitySetProperty name="DetalleColeccions" namespace="Dominio" type="DetalleColeccion" label="DetalleColeccions : IQueryable&lt;Dominio.DetalleColeccion&gt;" />
+        <entitySetProperty name="Coleccions" namespace="Dominio" type="Coleccion" label="Coleccions : IQueryable&lt;Dominio.Coleccion&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>
