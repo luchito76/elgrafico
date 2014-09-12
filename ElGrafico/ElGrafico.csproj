@@ -163,7 +163,6 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
-    <Content Include="AgregarRevistas.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
@@ -179,13 +178,14 @@
     <Content Include="imagenes\mellizosalataque.jpg" />
     <Content Include="imagenes\sabella.jpg" />
     <Content Include="imagenes\thumbs.jpg" />
-    <Content Include="ListaRevistas.aspx" />
+    <Content Include="Revistas\ListaRevistas.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Revistas\AgregarRevistas.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap-table.js" />
@@ -303,13 +303,6 @@
     <Compile Include="Account\ResetPasswordConfirmation.aspx.designer.cs">
       <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgregarRevistas.aspx.cs">
-      <DependentUpon>AgregarRevistas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AgregarRevistas.aspx.designer.cs">
-      <DependentUpon>AgregarRevistas.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -338,15 +331,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ListaRevistas.aspx.cs">
+    <Compile Include="Revistas\ListaRevistas.aspx.cs">
       <DependentUpon>ListaRevistas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListaRevistas.aspx.designer.cs">
+    <Compile Include="Revistas\ListaRevistas.aspx.designer.cs">
       <DependentUpon>ListaRevistas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Revistas\AgregarRevistas.aspx.cs">
+      <DependentUpon>AgregarRevistas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Revistas\AgregarRevistas.aspx.designer.cs">
+      <DependentUpon>AgregarRevistas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

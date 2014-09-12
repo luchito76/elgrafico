@@ -2,8 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" />
-    <link href="Content/fileinput.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="../Content/fileinput.min.css" rel="stylesheet" />
 
     <div class="panel panel-primary" id="form">
         <div class="panel-heading">
@@ -75,8 +75,8 @@
 
     <%--<asp:Image ID="Image1" runat="server" ImageUrl="AgregarRevistas.aspx?ImageID=1" Width="150px" Height="150px" />--%>
 
-    <script src="Scripts/bootstrap-datetimepicker.js"></script>
-    <script src="Scripts/fileinput.min.js"></script>
+    <script src="../Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="../Scripts/fileinput.min.js"></script>
 
     <script>
         function numbersonly(e) {

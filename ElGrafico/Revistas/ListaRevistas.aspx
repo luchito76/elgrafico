@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaRevistas.aspx.cs" Inherits="ElGrafico.ListaRevistas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-    <link href="Content/bootstrap-table.css" rel="stylesheet" />
+ 
+    <link href="../Content/bootstrap-table.css" rel="stylesheet" />
 
     <div class="panel panel-primary" id="form">
         <div class="panel-heading">
@@ -26,14 +26,14 @@
         </div>
     </div>
 
-    <script src="Scripts/bootstrap-table.js"></script>
+    <script src="../Scripts/bootstrap-table.js"></script>
 
     <script>        
         function operateFormatter(value, row, index) {
                       
             return [
             '<a class="edit ml10" href="javascript:void(0)" title="' + row.Titulo + '">',
-                    '<img alt="" src=imagenes/' + row.NombreTapa + ' width="100px" height="120px;"/>',
+                    '<img alt="" src=../imagenes/' + row.NombreTapa + ' width="100px" height="120px;"/>',
                 '</a>'
                 
             ].join('');

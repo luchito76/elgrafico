@@ -51,9 +51,9 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/AgregarRevistas.aspx">Agregar Revistas</a></li>
-                        <li><a runat="server" href="~/ListaRevistas.aspx">Listar Revistas</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                        <li><a runat="server" href="~/Revistas/AgregarRevistas.aspx">Agregar Revistas</a></li>
+                        <li><a runat="server" href="~/Revistas/ListaRevistas.aspx">Listar Revistas</a></li>
+                        <li><a runat="server" href="~/AgregarSuplementos.aspx">Agregar Suplementos</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
