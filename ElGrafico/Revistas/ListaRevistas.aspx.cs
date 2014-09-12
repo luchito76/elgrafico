@@ -36,9 +36,9 @@ namespace ElGrafico
                 set { numeroDeEdicion = value; }
             }
 
-            private DateTime? fecha;
+            private string fecha;
 
-            public DateTime? Fecha
+            public string Fecha
             {
                 get { return fecha; }
                 set { fecha = value; }
@@ -96,8 +96,8 @@ namespace ElGrafico
                 helper helper = new helper();
 
                 helper.IdRevista = data.idRevista;
-                helper.NumeroDeEdicion = data.Edicion;
-                helper.Fecha = data.Fecha;
+                helper.NumeroDeEdicion = data.Edicion;                
+                helper.Fecha = String.Format("{0:dd/MM/yyyy}",  data.Fecha.Value); 
                 helper.Titulo = data.Titulo;
                 helper.Deporte = data.Deporte;
                 helper.Cantidad = data.Cantidad;

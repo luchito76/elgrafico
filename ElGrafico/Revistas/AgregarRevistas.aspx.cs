@@ -123,6 +123,7 @@ namespace ElGrafico
             revista.IdDeporte = int.Parse(ddlDeportes.SelectedValue);
             revista.Cantidad = 1;
             revista.IdTapa = ultimoIdTapaInsertado;
+            revista.IdEstado = int.Parse(ddlEstado.SelectedValue);
 
             revistaNego.guardarRevista(revista);
         }

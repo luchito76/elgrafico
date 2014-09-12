@@ -13,13 +13,13 @@
             <table id="tbl1" data-toggle="table" class="drag_drop_grid GridSrc" data-pagination="true" data-search="true">
                 <thead>
                     <tr>
-                        <th data-field="IdRevista" data-align="center" data-sortable="true">ID</th>
+                        <th data-field="IdRevista" data-align="center" data-sortable="true" data-visible="false">ID</th>
                         <th data-field="NumeroDeEdicion" data-align="center" data-sortable="true">N° Edición</th>
                         <th data-field="Fecha" data-align="center" data-sortable="true">Fecha</th>
                         <th data-field="Titulo" data-sortable="true" data-sorter-nombre="nombre">Título</th>
                         <th data-field="Deporte" data-sortable="true" data-sorter-nombre="nombre">Deporte</th>
                         <th data-field="Cantidad" data-sortable="true" data-sorter-nombre="nombre">Cantidad</th>
-                        <th data-field="NombreTapa" data-sortable="true" data-sorter-nombre="nombre">Tapa</th>
+                        <th data-field="NombreTapa" data-sortable="true" data-sorter-nombre="nombre" data-visible="false">Tapa</th>
                         <th data-field="operate" data-formatter="operateFormatter" data-events="operateEvents" data-align="center">Tapa</th>
                     </tr>
                 </thead>
