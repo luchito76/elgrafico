@@ -191,6 +191,8 @@ namespace ElGrafico.Revistas
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             guardarRevista();
+
+            Response.Redirect("ListaRevistas.aspx");
         }
     }
 }
