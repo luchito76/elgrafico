@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ElGrafico {
+namespace ElGrafico.Revistas {
     
     
-    public partial class AgregarRevistas {
+    public partial class EditarRevista {
+        
+        /// <summary>
+        /// imgTapa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgTapa;
         
         /// <summary>
         /// lblNumeroEdicion control.
@@ -155,6 +164,15 @@ namespace ElGrafico {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        
+        /// <summary>
+        /// btnUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnUpload;
         
         /// <summary>
         /// lblMessage control.

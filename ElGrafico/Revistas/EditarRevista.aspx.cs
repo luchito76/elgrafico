@@ -10,21 +10,21 @@ using System.IO;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace ElGrafico
+namespace ElGrafico.Revistas
 {
-    public partial class VerRevista : System.Web.UI.Page
+    public partial class EditarRevista : System.Web.UI.Page
     {
+        DeportesNego deportesNego = new DeportesNego();
         RevistasNego revistaNego = new RevistasNego();
         TapaNego tapaNego = new TapaNego();
-        DeportesNego deportesNego = new DeportesNego();
         EstadoNego estadoNego = new EstadoNego();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
 
-            llenarListas();
             cargarRevista();
+            llenarListas();
         }
 
         private void llenarListas()
@@ -50,22 +50,30 @@ namespace ElGrafico
                     txtNumeroDeEdicion.Text = data.NumeroDeEdicion.ToString();
                     dtpFecha.Text = data.Fecha.ToString();
                     txtTitulo.Text = data.Titulo;
-                    ddlDeportes.Text = data.Deporte.Nombre;
-                    ddlEstado.Text = data.Estado.Nombre;
-                    verTapa(data.Tapa.Nombre);
-                    //multizoom2.ImageUrl = "../imagenes/" + data.Tapa.Nombre;                    
+                    ddlDeportes.Text = data.Deporte.IdDeporte.ToString();
+                    ddlEstado.Text = data.Estado.IdEstado.ToString();
+                    imgTapa.ImageUrl = tapa(data.Tapa.Nombre);
                 }
             }
         }
 
-        public string verTapa(string verTapa)
+        private string tapa(string tapa)
         {
-            string tapa = "../imagenes/balanta.jpg";
+            string tapaRevista = string.Empty;
 
-            return tapa;
+            if (tapa != "")
+            {
+                tapaRevista = "../imagenes/" + tapa;
+            }
+            else
+            {
+                tapaRevista = "../imagenes/noimage.jpg";
+            }
+
+            return tapaRevista;
         }
 
-        
+
 
         private void subirTapa()
         {
@@ -121,9 +129,16 @@ namespace ElGrafico
                 BinaryReader br = new BinaryReader(fs);
                 Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
-                guardarRevista(filename, largo, bytes);
+                Tapa tapa = new Tapa();
+                
+                Revista listaRevista = revistaNego.listaRevistaXIdRevista(int.Parse(Request["idRevista"])).SingleOrDefault();
+                
+                tapa.IdTapa = listaRevista.Tapa.IdTapa;
+                tapa.Nombre = filename.Replace(" ", "");
+                tapa.Largo = largo;
+                tapa.Imagen = bytes;
 
-                limpiarControles(this.Controls);
+                tapaNego.actualizarTapa(tapa);               
             }
             else
             {
@@ -131,29 +146,23 @@ namespace ElGrafico
                 lblMessage.Text = "No se reconoce el formato del archivo." +
                   " Subir formatos Image/Word/PDF/Excel ";
             }
-        }
+        }        
 
-        private void guardarRevista(string nombreArchivo, int largo, Byte[] bytes)
+        private void guardarRevista()
         {
-            Tapa tapa = new Tapa();
-            Revista revista = new Revista();
+            
+            Revista revista = revistaNego.listaRevistaXIdRevista(int.Parse(Request["idRevista"].ToString())).SingleOrDefault();     
 
-            tapa.Nombre = nombreArchivo.Replace(" ", "");
-            tapa.Largo = largo;
-            tapa.Imagen = bytes;
-
-            tapaNego.guardarTapa(tapa);
-
-            int ultimoIdTapaInsertado = tapaNego.ultimoIdTapaInsertado().IdTapa;
-
+            revista.IdRevista = revista.IdRevista;
             revista.NumeroDeEdicion = int.Parse(txtNumeroDeEdicion.Text);
             revista.Fecha = Convert.ToDateTime(dtpFecha.Text);
             revista.Titulo = txtTitulo.Text;
-            revista.IdDeporte = int.Parse(ddlDeportes.SelectedValue);
-            revista.Cantidad = 1;
-            revista.IdTapa = ultimoIdTapaInsertado;
+            revista.IdDeporte = int.Parse(ddlDeportes.SelectedValue);      
+            revista.IdTapa = revista.Tapa.IdTapa; 
+            revista.Cantidad = revista.Cantidad;           
+            revista.IdEstado = int.Parse(ddlEstado.SelectedValue);
 
-            revistaNego.guardarRevista(revista);
+            revistaNego.actualizarRevista(revista);
         }
 
         private void limpiarControles(ControlCollection controles)
@@ -177,6 +186,11 @@ namespace ElGrafico
                     //Así ningún control se quedará sin ser limpiado.
                     limpiarControles(control.Controls);
             }
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            guardarRevista();
         }
     }
 }

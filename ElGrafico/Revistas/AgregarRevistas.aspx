@@ -66,13 +66,20 @@
             <div class="col-md-3">
                 <asp:FileUpload ID="FileUpload1" CssClass="file" runat="server" data-show-upload="false" data-show-remove="false" />
                 <br />
-                <button id="btnUpload" type="submit" runat="server" onserverclick="btnUpload_Click" class="btn btn-primary kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i>Upload</button>
+                <%--<button id="btnUpload" type="submit" runat="server" onserverclick="btnUpload_Click" class="btn btn-primary kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i>Upload</button>--%>
                 <asp:Label ID="lblMessage" runat="server" Text=""
                     Font-Names="Arial"></asp:Label>
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" class="btn btn-primary" OnClick="btnGuardar_Click" />
+            </div>
+        </div>
+
     </div>
-    
+
     <%--<asp:Image ID="Image1" runat="server" ImageUrl="AgregarRevistas.aspx?ImageID=1" Width="150px" Height="150px" />--%>
 
     <script src="../Scripts/bootstrap-datetimepicker.js"></script>

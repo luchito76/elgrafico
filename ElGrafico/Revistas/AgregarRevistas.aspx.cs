@@ -86,13 +86,13 @@ namespace ElGrafico
             if (contenttype != String.Empty)
             {
 
-                Stream fs = FileUpload1.PostedFile.InputStream;
-                BinaryReader br = new BinaryReader(fs);
-                Byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                //Stream fs = FileUpload1.PostedFile.InputStream;
+                //BinaryReader br = new BinaryReader(fs);
+                //Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
-                guardarRevista(filename, largo, bytes);
+                //guardarRevista(filename, largo, bytes);
 
-                limpiarControles(this.Controls);
+                //limpiarControles(this.Controls);
             }
             else
             {
@@ -104,12 +104,23 @@ namespace ElGrafico
 
 
 
-        private void guardarRevista(string nombreArchivo, int largo, Byte[] bytes)
+        private void guardarRevista()
         {
+            subirTapa();
+
+            string filePath = FileUpload1.PostedFile.FileName;
+            string filename = Path.GetFileName(filePath);
+
+            int largo = FileUpload1.PostedFile.ContentLength;
+
+            Stream fs = FileUpload1.PostedFile.InputStream;
+            BinaryReader br = new BinaryReader(fs);
+            Byte[] bytes = br.ReadBytes((Int32)fs.Length);
+
             Tapa tapa = new Tapa();
             Revista revista = new Revista();
 
-            tapa.Nombre = nombreArchivo.Replace(" ", "");
+            tapa.Nombre = filename.Replace(" ", "");
             tapa.Largo = largo;
             tapa.Imagen = bytes;
 
@@ -149,6 +160,13 @@ namespace ElGrafico
                     //Así ningún control se quedará sin ser limpiado.
                     limpiarControles(control.Controls);
             }
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            guardarRevista();
+            limpiarControles(this.Controls);
+
         }
     }
 }

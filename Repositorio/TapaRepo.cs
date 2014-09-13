@@ -22,6 +22,12 @@ namespace Repositorio
             Tapa ultimoIdTapa = result.Last();
 
             return ultimoIdTapa;
-        }        
+        }
+
+        public void actualizarTapa(Tapa tapa)
+        {
+            dominio.AttachCopy(tapa);
+            dominio.SaveChanges();
+        } 
     }
 }

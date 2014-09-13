@@ -25,5 +25,10 @@ namespace Negocio
         {
             return revistaRepo.listaRevistaXIdRevista(idRevista);
         }
+        public void actualizarRevista(Revista revista)
+        {
+            revistaRepo.actualizarRevista(revista);
+        }
+
     }
 }

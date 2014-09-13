@@ -181,6 +181,7 @@
     <Content Include="imagenes\mellizosalataque.jpg" />
     <Content Include="imagenes\sabella.jpg" />
     <Content Include="imagenes\thumbs.jpg" />
+    <Content Include="Revistas\EditarRevista.aspx" />
     <Content Include="Revistas\ListaRevistas.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -229,13 +230,14 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="Upload.aspx" />
-    <Content Include="Revistas\VerRevista.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Site.Mobile.Master" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -342,6 +344,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Revistas\EditarRevista.aspx.cs">
+      <DependentUpon>EditarRevista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Revistas\EditarRevista.aspx.designer.cs">
+      <DependentUpon>EditarRevista.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Revistas\ListaRevistas.aspx.cs">
       <DependentUpon>ListaRevistas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -379,13 +388,6 @@
     </Compile>
     <Compile Include="Upload.aspx.designer.cs">
       <DependentUpon>Upload.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Revistas\VerRevista.aspx.cs">
-      <DependentUpon>VerRevista.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Revistas\VerRevista.aspx.designer.cs">
-      <DependentUpon>VerRevista.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

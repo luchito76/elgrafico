@@ -30,5 +30,11 @@ namespace Repositorio
 
             return result;
         }
+
+        public void actualizarRevista(Revista revista)
+        {
+            dominio.AttachCopy(revista);
+            dominio.SaveChanges();
+        }
     }
 }

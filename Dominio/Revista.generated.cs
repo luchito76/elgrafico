@@ -141,19 +141,6 @@ namespace Dominio
 			}
 		}
 		
-		private Deporte deporte;
-		public virtual Deporte Deporte
-		{
-			get
-			{
-				return this.deporte;
-			}
-			set
-			{
-				this.deporte = value;
-			}
-		}
-		
 		private Estado estado;
 		public virtual Estado Estado
 		{
@@ -164,6 +151,19 @@ namespace Dominio
 			set
 			{
 				this.estado = value;
+			}
+		}
+		
+		private Deporte deporte;
+		public virtual Deporte Deporte
+		{
+			get
+			{
+				return this.deporte;
+			}
+			set
+			{
+				this.deporte = value;
 			}
 		}
 		

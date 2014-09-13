@@ -21,5 +21,10 @@ namespace Negocio
         {
             return tapaRepo.ultimoIdTapaInsertado();
         }
+
+        public void actualizarTapa(Tapa tapa)
+        {
+            tapaRepo.actualizarTapa(tapa);
+        }
     }
 }

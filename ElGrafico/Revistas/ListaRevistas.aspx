@@ -14,7 +14,7 @@
                 <thead>
                     <tr>
                         <th data-field="IdRevista" data-align="center" data-sortable="true" data-visible="false">ID</th>
-                        <th data-field="NumeroDeEdicion" data-align="center" data-sortable="true">N° Edición</th>
+                        <th data-field="operate" data-formatter="operateFormatter1" data-align="center" data-sortable="true">N° Edición</th>
                         <th data-field="Fecha" data-align="center" data-sortable="true">Fecha</th>
                         <th data-field="Titulo" data-sortable="true" data-sorter-nombre="nombre">Título</th>
                         <th data-field="Deporte" data-sortable="true" data-sorter-nombre="nombre">Deporte</th>
@@ -30,6 +30,8 @@
     <script src="../Scripts/bootstrap-table.js"></script>
 
     <script>        
+        
+        
         function operateFormatter(value, row, index) {
                       
             return [
@@ -40,9 +42,19 @@
             ].join('');
         }
 
+        function operateFormatter1(value, row, index) {
+                      
+            return [
+            '<a class="ver ml10" href="' + row.IdRevista +'">',
+                    '<a href="EditarRevista.aspx?idRevista='+ row.IdRevista +'">'+ row.NumeroDeEdicion +'</a>',
+                '</a>'
+                
+            ].join('');
+        }
+
         window.operateEvents = {
             'click .ver': function (e, value, row, index) {                          
-                window.location = 'VerRevista.aspx?idRevista=' + row.IdRevista; 
+                window.location = 'EditarRevista.aspx?idRevista=' + row.IdRevista; 
             }
         };
 
