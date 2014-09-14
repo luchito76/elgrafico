@@ -119,6 +119,27 @@ namespace Dominio
 			return queryResult;
 		}
 		
+		public IEnumerable<ListadoColeccionResultSet0> SP_ListadoColeccion()
+		{
+			int returnValue;
+			return SP_ListadoColeccion(out returnValue);
+		}
+		
+		public IEnumerable<ListadoColeccionResultSet0> SP_ListadoColeccion(out int returnValue)
+		{
+			OAParameter parameterReturnValue = new OAParameter();
+		    parameterReturnValue.Direction = ParameterDirection.ReturnValue;
+		    parameterReturnValue.ParameterName = "parameterReturnValue";
+		
+			IEnumerable<ListadoColeccionResultSet0> queryResult = this.ExecuteQuery<ListadoColeccionResultSet0>("[dbo].[ListadoColeccion]", CommandType.StoredProcedure, parameterReturnValue);
+		
+			returnValue = parameterReturnValue.Value == DBNull.Value 
+				? -1
+				: (int)parameterReturnValue.Value;
+		
+			return queryResult;
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -166,6 +187,8 @@ namespace Dominio
 		}
 		IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas();
 		IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas(out int returnValue);
+		IEnumerable<ListadoColeccionResultSet0> SP_ListadoColeccion();
+		IEnumerable<ListadoColeccionResultSet0> SP_ListadoColeccion(out int returnValue);
 	}
 }
 #pragma warning restore 1591

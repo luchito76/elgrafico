@@ -32,6 +32,11 @@ namespace Negocio
             return coleccionRepo.listaColecciones();
         }
 
+        public IEnumerable<ListadoColeccionResultSet0> listaColeccionXDetalleColeccion()
+        {
+            return coleccionRepo.listaColeccionXDetalleColeccion();
+        }
+
         public int ultimoCapituloXColeccion(int idColeccion)
         {
             return coleccionRepo.ultimoCapituloXColeccion(idColeccion);

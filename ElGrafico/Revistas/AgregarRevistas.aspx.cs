@@ -132,7 +132,7 @@ namespace ElGrafico
             revista.Fecha = Convert.ToDateTime(dtpFecha.Text);
             revista.Titulo = txtTitulo.Text;
             revista.IdDeporte = int.Parse(ddlDeportes.SelectedValue);
-            revista.Cantidad = 1;
+            revista.Cantidad = int.Parse(txtCantidad.Text);
             revista.IdTapa = ultimoIdTapaInsertado;
             revista.IdEstado = int.Parse(ddlEstado.SelectedValue);
 

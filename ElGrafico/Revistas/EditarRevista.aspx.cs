@@ -52,6 +52,7 @@ namespace ElGrafico.Revistas
                     txtTitulo.Text = data.Titulo;
                     ddlDeportes.Text = data.Deporte.IdDeporte.ToString();
                     ddlEstado.Text = data.Estado.IdEstado.ToString();
+                    txtCantidad.Text = data.Cantidad.ToString();
                     imgTapa.ImageUrl = tapa(data.Tapa.Nombre);
                 }
             }
@@ -130,15 +131,15 @@ namespace ElGrafico.Revistas
                 Byte[] bytes = br.ReadBytes((Int32)fs.Length);
 
                 Tapa tapa = new Tapa();
-                
+
                 Revista listaRevista = revistaNego.listaRevistaXIdRevista(int.Parse(Request["idRevista"])).SingleOrDefault();
-                
+
                 tapa.IdTapa = listaRevista.Tapa.IdTapa;
                 tapa.Nombre = filename.Replace(" ", "");
                 tapa.Largo = largo;
                 tapa.Imagen = bytes;
 
-                tapaNego.actualizarTapa(tapa);               
+                tapaNego.actualizarTapa(tapa);
             }
             else
             {
@@ -146,22 +147,21 @@ namespace ElGrafico.Revistas
                 lblMessage.Text = "No se reconoce el formato del archivo." +
                   " Subir formatos Image/Word/PDF/Excel ";
             }
-        }        
+        }
 
         private void guardarRevista()
         {
-            
-            Revista revista = revistaNego.listaRevistaXIdRevista(int.Parse(Request["idRevista"].ToString())).SingleOrDefault();     
+
+            Revista revista = revistaNego.listaRevistaXIdRevista(int.Parse(Request["idRevista"].ToString())).SingleOrDefault();
 
             revista.IdRevista = revista.IdRevista;
             revista.NumeroDeEdicion = int.Parse(txtNumeroDeEdicion.Text);
             revista.Fecha = Convert.ToDateTime(dtpFecha.Text);
             revista.Titulo = txtTitulo.Text;
-            revista.IdDeporte = int.Parse(ddlDeportes.SelectedValue);      
-            revista.IdTapa = revista.Tapa.IdTapa; 
-            revista.Cantidad = revista.Cantidad;           
+            revista.IdDeporte = int.Parse(ddlDeportes.SelectedValue);
+            revista.IdTapa = revista.Tapa.IdTapa;
+            revista.Cantidad = int.Parse(txtCantidad.Text);
             revista.IdEstado = int.Parse(ddlEstado.SelectedValue);
-
             revistaNego.actualizarRevista(revista);
         }
 

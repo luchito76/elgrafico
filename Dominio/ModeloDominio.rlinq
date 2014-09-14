@@ -229,6 +229,9 @@
       <orm:procedure name="ListadoDeRevistas">
         <orm:result-sets />
       </orm:procedure>
+      <orm:procedure name="ListadoColeccion">
+        <orm:result-sets />
+      </orm:procedure>
     </orm:schema>
     <orm:relational-naming-settings>
       <orm:source-strategy>Property</orm:source-strategy>
@@ -415,6 +418,15 @@
         </domainMethodReturnShape>
       </domainMethod>
     </domainModelHasDomainMethods>
+    <domainModelHasDomainMethods Id="aa5a6363-c0e3-4e37-a4f2-e39c556349dd">
+      <domainMethod name="SP_ListadoColeccion" storedProcedureName="'ListadoColeccion'" generateReturnValueOverload="true">
+        <domainMethodReturnShape>
+          <domainMethodReferencesDomainMethodReturnShape Id="105ffa9b-fd80-4aa8-b114-b56effee0b33">
+            <domainMethodReturnShapeMoniker name="/ModeloDominio/ListadoColeccionResultSet0" />
+          </domainMethodReferencesDomainMethodReturnShape>
+        </domainMethodReturnShape>
+      </domainMethod>
+    </domainModelHasDomainMethods>
   </domainMethods>
   <domainMethodReturnShapes>
     <domainModelHasDomainMethodReturnShapes Id="b9d7a7ff-98ae-4a1a-b1f7-88577e883787">
@@ -428,6 +440,16 @@
         <Property Id="f6ef4293-80ca-49c8-aeee-f3d52b093c09" name="NombreImagen" type="System.String" label="NombreImagen : System.String" nullable="true" fieldName="_nombreImagen" />
         <Property Id="d66ac8c6-7a12-4590-9deb-8b62e21c33fd" name="Largo" type="System.Int32" label="Largo : System.Int32" nullable="true" fieldName="_largo" />
         <Property Id="97668837-d09a-4c66-a43b-23d10883f18c" name="Imagen" type="System.Byte[]" label="Imagen : System.Byte[]" nullable="true" fieldName="_imagen" />
+      </domainMethodReturnShape>
+    </domainModelHasDomainMethodReturnShapes>
+    <domainModelHasDomainMethodReturnShapes Id="aa092116-bb74-42cf-b76b-50250dd68cba">
+      <domainMethodReturnShape name="ListadoColeccionResultSet0" namespace="Dominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
+        <Property Id="2df2d0ec-a2d5-49d8-a057-fe3566609a1e" name="idDetalleColeccion" type="System.Int32" label="idDetalleColeccion : System.Int32" fieldName="_idDetalleColeccion" />
+        <Property Id="10c185e2-268a-435e-8bf3-57235b2bf42c" name="idColeccion" type="System.Int32" label="idColeccion : System.Int32" fieldName="_idColeccion" />
+        <Property Id="c0771a38-e3d9-4f59-afad-796ea29fca59" name="NombreColeccion" type="System.String" label="NombreColeccion : System.String" nullable="true" fieldName="_nombreColeccion" />
+        <Property Id="0de41b29-e10f-4685-a7bf-2a85e6dc0ebb" name="Estado" type="System.String" label="Estado : System.String" nullable="true" fieldName="_estado" />
+        <Property Id="48202241-45a0-4989-a0db-74eae02ad1e9" name="NombreCapitulo" type="System.String" label="NombreCapitulo : System.String" nullable="true" fieldName="_nombreCapitulo" />
+        <Property Id="14364234-966f-4230-99a1-f6068b6f595c" name="Capitulo" type="System.Int32" label="Capitulo : System.Int32" nullable="true" fieldName="_capitulo" />
       </domainMethodReturnShape>
     </domainModelHasDomainMethodReturnShapes>
   </domainMethodReturnShapes>

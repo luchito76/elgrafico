@@ -165,6 +165,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="bootstrap.css" />
     <Content Include="Coleccion\AgregarColeccion.aspx" />
+    <Content Include="Coleccion\ListaColeccion.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
@@ -201,6 +202,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <None Include="Properties\PublishProfiles\ElGrafico.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Revistas\AgregarRevistas.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
@@ -339,6 +341,13 @@
     </Compile>
     <Compile Include="Coleccion\AgregarColeccion.aspx.designer.cs">
       <DependentUpon>AgregarColeccion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Coleccion\ListaColeccion.aspx.cs">
+      <DependentUpon>ListaColeccion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Coleccion\ListaColeccion.aspx.designer.cs">
+      <DependentUpon>ListaColeccion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

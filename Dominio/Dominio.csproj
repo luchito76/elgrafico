@@ -53,6 +53,9 @@
     <Compile Include="Estado.generated.cs">
       <DependentUpon>ModeloDominio.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="ListadoColeccionResultSet0.generated.cs">
+      <DependentUpon>ModeloDominio.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="ListadoDeRevistasResultSet0.generated.cs">
       <DependentUpon>ModeloDominio.rlinq</DependentUpon>
     </Compile>

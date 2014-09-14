@@ -7,7 +7,7 @@
 
     <div class="panel panel-primary" id="form">
         <div class="panel-heading">
-            <h2 class="panel-title">Alta Alumnos</h2>
+            <h2 class="panel-title">Cargar Revista</h2>
         </div>
 
         <div class="form-group">
@@ -60,11 +60,22 @@
                 <asp:RequiredFieldValidator ID="rfvEstado" runat="server" ErrorMessage="Ingrese Estado" ControlToValidate="ddlEstado" ForeColor="Red"></asp:RequiredFieldValidator>
             </div>
 
+
+            <b>
+                <asp:Label ID="lblCantidad" runat="server" Text="Cantidad" for="txtCantidad" class="col-sm-2 control-label">      
+                </asp:Label></b>
+            <div class="col-sm-3">
+                <asp:TextBox runat="server" class="form-control" ID="txtCantidad" placeholder="Cantidad"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvCantidad" runat="server" ErrorMessage="Ingrese la Cantidad" ControlToValidate="txtCantidad" ForeColor="Red"></asp:RequiredFieldValidator>
+            </div>
+        </div>
+
+        <div class="form-group">
             <b>
                 <asp:Label ID="lblSubirArchivo" runat="server" Text="Subir Tapa" class="col-sm-2 control-label">      
                 </asp:Label></b>
             <div class="col-md-3">
-                <asp:FileUpload ID="FileUpload1" CssClass="file" runat="server" data-show-upload="false" data-show-remove="false" />
+                <asp:FileUpload ID="FileUpload1" CssClass="file" runat="server" data-show-upload="false" data-show-remove="false" data-browse-label="Cargar" />
                 <br />
                 <%--<button id="btnUpload" type="submit" runat="server" onserverclick="btnUpload_Click" class="btn btn-primary kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i>Upload</button>--%>
                 <asp:Label ID="lblMessage" runat="server" Text=""
@@ -96,7 +107,9 @@
     </script>
 
     <script>
-        $("#FileUpload1").fileinput();
+        $("#FileUpload1").fileinput({
+            browseLabel: "Subida;"
+        });
     </script>
 
     <script type="text/javascript">

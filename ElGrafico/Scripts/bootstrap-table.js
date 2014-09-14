@@ -92,19 +92,19 @@
         rowStyle: function (row, index) {return {};},
 
         formatLoadingMessage: function () {
-            return 'Loading, please wait…';
+            return 'Cargando, espera un cacho…';
         },
         formatRecordsPerPage: function (pageNumber) {
-            return sprintf('%s records per page', pageNumber);
+            return sprintf('%s registros por página', pageNumber);
         },
         formatShowingRows: function (pageFrom, pageTo, totalRows) {
-            return sprintf('Showing %s to %s of %s rows', pageFrom, pageTo, totalRows);
+            return sprintf('Mostrando %s a %s de %s filas', pageFrom, pageTo, totalRows);
         },
         formatSearch: function () {
-            return 'Search';
+            return 'Buscar';
         },
         formatNoMatches: function () {
-            return 'No matching records found';
+            return 'No se encontraron registros.';
         },
 
         onAll: function (name, args) {return false;},

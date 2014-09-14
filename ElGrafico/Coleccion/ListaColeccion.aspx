@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaRevistas.aspx.cs" Inherits="ElGrafico.ListaRevistas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListaColeccion.aspx.cs" Inherits="ElGrafico.Coleccion.ListaColeccion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -13,14 +13,12 @@
             <table id="tbl1" data-toggle="table" class="drag_drop_grid GridSrc" data-pagination="true" data-search="true">
                 <thead>
                     <tr>
-                        <th data-field="IdRevista" data-align="center" data-sortable="true" data-visible="false">ID</th>
-                        <th data-field="operate" data-formatter="operateFormatter1" data-align="center" data-sortable="true">N° Edición</th>
-                        <th data-field="Fecha" data-align="center" data-sortable="true">Fecha</th>
-                        <th data-field="Titulo" data-sortable="true" data-sorter-nombre="nombre">Título</th>
-                        <th data-field="Deporte" data-sortable="true" data-sorter-nombre="nombre">Deporte</th>
-                        <th data-field="Cantidad" data-sortable="true" data-sorter-nombre="nombre">Cantidad</th>
-                        <th data-field="NombreTapa" data-sortable="true" data-sorter-nombre="nombre" data-visible="false">Tapa</th>
-                        <th data-field="operate" data-formatter="operateFormatter" data-events="operateEvents" data-align="center">Tapa</th>
+                        <%--<th data-field="IdRevista" data-align="center" data-sortable="true" data-visible="false">ID</th>
+                        <th data-field="operate" data-formatter="operateFormatter1" data-align="center" data-sortable="true">N° Edición</th>--%>
+                        <th data-field="NombreColeccion" data-align="center" data-sortable="true">Colección</th>
+                        <th data-field="Estado" data-sortable="true" data-sorter-nombre="nombre">Estado</th>
+                        <th data-field="NombreCapitulo" data-sortable="true" data-sorter-nombre="nombre">Título del Capitulo</th>
+                        <th data-field="Capitulo" data-sortable="true" data-sorter-nombre="nombre">Capítulo</th>
                     </tr>
                 </thead>
             </table>

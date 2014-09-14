@@ -38,6 +38,13 @@ namespace Repositorio
             return result;
         }
 
+        public IEnumerable<ListadoColeccionResultSet0> listaColeccionXDetalleColeccion()
+        {
+            IEnumerable<ListadoColeccionResultSet0> result = dominio.SP_ListadoColeccion().ToList();
+
+            return result;
+        }
+
         //Devuelve el último capítulo ingresado de la colección seleccionada para sugerir al usuario el capítulo siguiente que tiene que ingresar.
         public int ultimoCapituloXColeccion(int idColeccion)
         {
@@ -54,6 +61,8 @@ namespace Repositorio
 
             return ultimoCapitulo;
         }
+
+
 
     }
 }

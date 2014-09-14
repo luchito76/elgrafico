@@ -603,7 +603,7 @@
         removeLabel: 'Remove',
         removeIcon: '<i class="glyphicon glyphicon-ban-circle"></i> ',
         removeClass: 'btn btn-default',
-        uploadLabel: 'Upload',
+        uploadLabel: 'Subir',
         uploadIcon: '<i class="glyphicon glyphicon-upload"></i> ',
         uploadClass: 'btn btn-default',
         uploadUrl: null,
