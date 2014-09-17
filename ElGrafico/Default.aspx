@@ -3,16 +3,15 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <link href="Content/bootstrap-table.css" rel="stylesheet" />
-    
+
     <div class="row clearfix">
         <div class="col-md-12 column">
-        <%--<div class="css-shapes-preview"></div>--%>
+            <%--<div class="css-shapes-preview"></div>--%>
             <h1 class="text-center text-info">Colección de Revistas El Gráfico
             </h1>
+            <h3 class="text-center text-warning">Total de Revistas Cargadas: <%= total %> Revistas
+            </h3>
             <div class="jumbotron">
-                <h2>Aplicación para cargar revistas de El Gráfico
-                </h2>
-                
                 <div class="col-md-12">
                     <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">
                         <table id="tbl1" data-toggle="table" class="drag_drop_grid GridSrc" data-pagination="false" data-search="false" data-show-header="false" data-show-columns="false">
@@ -67,5 +66,5 @@
                 }
             });
         });
-		</script>
+    </script>
 </asp:Content>
