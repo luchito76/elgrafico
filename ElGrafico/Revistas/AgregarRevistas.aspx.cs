@@ -164,9 +164,15 @@ namespace ElGrafico
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            guardarRevista();
-            limpiarControles(this.Controls);
-
+            try
+            {
+                guardarRevista();
+                limpiarControles(this.Controls);
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
     }
 }
