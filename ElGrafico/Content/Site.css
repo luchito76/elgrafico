@@ -27,3 +27,18 @@ input[type="email"] {
         padding: 0;
     }
 }
+
+*, *:before, *:after{ 
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+} 
+.css-shapes-preview{ 
+    position: relative; 
+    height: 190px; 
+    width: 190px; 
+    padding: 12px; 
+    background-color: #9CC7CA; 
+    border-radius: 150px; 
+    border-top: 84px transparent; 
+}

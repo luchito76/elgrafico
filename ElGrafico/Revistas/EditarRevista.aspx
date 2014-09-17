@@ -82,7 +82,7 @@
                     <div class="col-md-3">
                         <asp:FileUpload ID="FileUpload1" CssClass="file" runat="server" data-show-upload="false" data-show-remove="false" data-browse-label="Cargar" />
                         <br />
-                        <%--<button id="btnUpload" type="submit" runat="server" onserverclick="btnUpload_Click" class="btn btn-primary kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i>Upload</button>--%>
+                        <button id="btnUpload" type="submit" runat="server" onserverclick="btnUpload_Click" class="btn btn-primary kv-fileinput-upload"><i class="glyphicon glyphicon-upload"></i> Subir Imagen</button>
                         <asp:Label ID="lblMessage" runat="server" Text=""
                             Font-Names="Arial"></asp:Label>
                     </div>

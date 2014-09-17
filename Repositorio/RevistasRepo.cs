@@ -36,5 +36,12 @@ namespace Repositorio
             dominio.AttachCopy(revista);
             dominio.SaveChanges();
         }
+
+        public IEnumerable<CantidadRevistasXDeporteResultSet0> cantidadDeRevistasXDeporte()
+        {
+            IEnumerable<CantidadRevistasXDeporteResultSet0> result = dominio.SP_CantidadRevistasXDeporte().ToList();
+
+            return result;
+        }
     }
 }

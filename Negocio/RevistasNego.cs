@@ -30,5 +30,10 @@ namespace Negocio
             revistaRepo.actualizarRevista(revista);
         }
 
+        public IEnumerable<CantidadRevistasXDeporteResultSet0> cantidadDeRevistasXDeporte()
+        {
+            return revistaRepo.cantidadDeRevistasXDeporte();
+        }
+
     }
 }

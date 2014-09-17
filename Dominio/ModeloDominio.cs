@@ -140,6 +140,27 @@ namespace Dominio
 			return queryResult;
 		}
 		
+		public IEnumerable<CantidadRevistasXDeporteResultSet0> SP_CantidadRevistasXDeporte()
+		{
+			int returnValue;
+			return SP_CantidadRevistasXDeporte(out returnValue);
+		}
+		
+		public IEnumerable<CantidadRevistasXDeporteResultSet0> SP_CantidadRevistasXDeporte(out int returnValue)
+		{
+			OAParameter parameterReturnValue = new OAParameter();
+		    parameterReturnValue.Direction = ParameterDirection.ReturnValue;
+		    parameterReturnValue.ParameterName = "parameterReturnValue";
+		
+			IEnumerable<CantidadRevistasXDeporteResultSet0> queryResult = this.ExecuteQuery<CantidadRevistasXDeporteResultSet0>("[dbo].[CantidadRevistasXDeporte]", CommandType.StoredProcedure, parameterReturnValue);
+		
+			returnValue = parameterReturnValue.Value == DBNull.Value 
+				? -1
+				: (int)parameterReturnValue.Value;
+		
+			return queryResult;
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -189,6 +210,8 @@ namespace Dominio
 		IEnumerable<ListadoDeRevistasResultSet0> SP_ListadoDeRevistas(out int returnValue);
 		IEnumerable<ListadoColeccionResultSet0> SP_ListadoColeccion();
 		IEnumerable<ListadoColeccionResultSet0> SP_ListadoColeccion(out int returnValue);
+		IEnumerable<CantidadRevistasXDeporteResultSet0> SP_CantidadRevistasXDeporte();
+		IEnumerable<CantidadRevistasXDeporteResultSet0> SP_CantidadRevistasXDeporte(out int returnValue);
 	}
 }
 #pragma warning restore 1591

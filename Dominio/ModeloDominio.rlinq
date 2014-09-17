@@ -232,6 +232,9 @@
       <orm:procedure name="ListadoColeccion">
         <orm:result-sets />
       </orm:procedure>
+      <orm:procedure name="CantidadRevistasXDeporte">
+        <orm:result-sets />
+      </orm:procedure>
     </orm:schema>
     <orm:relational-naming-settings>
       <orm:source-strategy>Property</orm:source-strategy>
@@ -427,6 +430,15 @@
         </domainMethodReturnShape>
       </domainMethod>
     </domainModelHasDomainMethods>
+    <domainModelHasDomainMethods Id="553bae63-3527-4c45-9207-cee3e79267d6">
+      <domainMethod name="SP_CantidadRevistasXDeporte" storedProcedureName="'CantidadRevistasXDeporte'" generateReturnValueOverload="true">
+        <domainMethodReturnShape>
+          <domainMethodReferencesDomainMethodReturnShape Id="62cdd575-482b-4dda-b647-c88ab438bc45">
+            <domainMethodReturnShapeMoniker name="/ModeloDominio/CantidadRevistasXDeporteResultSet0" />
+          </domainMethodReferencesDomainMethodReturnShape>
+        </domainMethodReturnShape>
+      </domainMethod>
+    </domainModelHasDomainMethods>
   </domainMethods>
   <domainMethodReturnShapes>
     <domainModelHasDomainMethodReturnShapes Id="b9d7a7ff-98ae-4a1a-b1f7-88577e883787">
@@ -450,6 +462,12 @@
         <Property Id="0de41b29-e10f-4685-a7bf-2a85e6dc0ebb" name="Estado" type="System.String" label="Estado : System.String" nullable="true" fieldName="_estado" />
         <Property Id="48202241-45a0-4989-a0db-74eae02ad1e9" name="NombreCapitulo" type="System.String" label="NombreCapitulo : System.String" nullable="true" fieldName="_nombreCapitulo" />
         <Property Id="14364234-966f-4230-99a1-f6068b6f595c" name="Capitulo" type="System.Int32" label="Capitulo : System.Int32" nullable="true" fieldName="_capitulo" />
+      </domainMethodReturnShape>
+    </domainModelHasDomainMethodReturnShapes>
+    <domainModelHasDomainMethodReturnShapes Id="b247edee-7bd8-4daf-a72e-27951a51cfff">
+      <domainMethodReturnShape name="CantidadRevistasXDeporteResultSet0" namespace="Dominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
+        <Property Id="91373743-9e0a-4e9f-94ee-31d225d89c72" name="Deporte" type="System.String" label="Deporte : System.String" nullable="true" fieldName="_deporte" />
+        <Property Id="660b82c5-7f3a-4381-92f9-bbde0a9787b2" name="Total" type="System.Int32" label="Total : System.Int32" nullable="true" fieldName="_total" />
       </domainMethodReturnShape>
     </domainModelHasDomainMethodReturnShapes>
   </domainMethodReturnShapes>
