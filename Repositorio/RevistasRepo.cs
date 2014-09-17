@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+using System.Data.SqlClient;
+using Telerik.OpenAccess.RT;
 
 namespace Repositorio
 {
@@ -13,8 +15,16 @@ namespace Repositorio
 
         public void guardarRevista(Revista revista)
         {
-            dominio.Add(revista);
-            dominio.SaveChanges();
+            try
+            {
+                dominio.Add(revista);
+                dominio.SaveChanges();
+            }
+            catch (Telerik.OpenAccess.Exceptions.OptimisticVerificationException ex)
+            {
+                Console.WriteLine("Optimistic concurrency error.");
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public IEnumerable<ListadoDeRevistasResultSet0> listaRevistas()
